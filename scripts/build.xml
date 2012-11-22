@@ -1,0 +1,132 @@
+<project name="ProjectInstaller" basedir=".." default="jar">
+
+	<property name="rootdir" 			value="${basedir}" />
+	<property name= "pacletName" 		value = "ProjectInstaller" />	
+	
+	
+	
+	
+	
+	<!-- Main build properties -->		
+	
+	<property name=  "dist"					value = "${rootdir}/Build/${pacletName}"/> <!-- Location where the project is built--> 
+		
+	<property name = "system_id"  			value = "Windows-x86-64"/>
+		
+	
+	<property name="mathematicaInstallDir" 	value="C:\Program Files\Wolfram Research\Mathematica\8.0"/>
+	<property name="mathExe" 				value="C:\Program Files\Wolfram Research\Mathematica\8.0\MathKernel.exe"/>
+	
+	
+	
+	
+	<!-- Java - related -->
+	<property name="src.dir"     		value="${rootdir}/javaSource"/>
+	<property name="java.lib.dir"     	value="${rootdir}/ProjectInstaller/Java"/>
+	<property name = "java.src.dir"		value = "${rootdir}/javaSource"/>
+	
+	
+	<!-- For testing -->
+	<property name = "destination"      	value = "C:\Users\Archie\AppData\Roaming\Mathematica\Applications/${pacletName}"/>
+	
+	
+	<!-- 
+	
+	Parameters fixed by a current layout of the project (source)
+	
+	    src.dir 				Java sources root
+	    java.lib.dir			Java libraries location (extra jars, within a project)
+	
+	
+	Paremeters we need as external: 
+	
+		dist               	A temporary directory where the final distributive will be assembled
+		                    (defaults to a sub-directory within current location of the project)
+		                      
+		temp.build.dir         A temporary directory where compiled java claseses, jars, etc will be stored 
+		                       during the build process  (defaults to a sub-directory within current 
+		                       location of the project)
+		                       
+		system_id			Platform		
+		
+		
+	Parameters to set dynamically:
+	
+	    
+	    classes.dir				Compiled classes go here
+	    java.build.dir			Temporary directory to store java classes and jars
+	    jar.dir					A directory where the built jar will be placed
+	    
+	    
+	-->	
+	
+	
+	<path id="classpath">
+	     <fileset dir="${java.lib.dir}" includes="**/*.jar"/>
+	</path>
+		
+	
+
+	<target name = "init">		
+		<!-- Default to a temporary directory within a project current location -->			
+		<condition property="temp.build.dir" value = "${rootdir}/javaOutput/Build">
+			<not>
+				<isset property = "temp.build.dir"/>
+			</not>				
+		</condition>
+		
+		<!-- Java-related properties -->		
+		<property name="java.build.dir"   	value="${temp.build.dir}"/>
+		<property name="classes.dir" 		value="${java.build.dir}/classes"/>
+	    <property name="jar.dir"     		value="${java.build.dir}/jar"/>
+	</target>
+	
+	
+	
+	
+	<target name = "cleanLocal" depends = "init">
+		<mkdir dir="${java.build.dir}"/>
+	    <delete includeEmptyDirs="true" failonerror="false">
+		    <fileset dir="${java.build.dir}" includes="**/*" />
+			<fileset dir="${local.build.dir}" includes="**/*" />
+	   	</delete>
+	</target>
+	
+
+		
+    <target name="clean" >      
+    	<delete dir = "${dist}"/>
+    	<antcall target = "cleanLocal"/>
+    </target>
+
+	
+	
+    <target name="compile"  depends = "init">
+        <mkdir dir="${classes.dir}"/>
+        <javac 
+        	target="1.6" 
+        	source="1.6" 
+        	includeantruntime = "false" 
+        	srcdir="${src.dir}" 
+        	destdir="${classes.dir}"  
+        	classpathref="classpath"
+        	excludes = "org/lshifr/arch/tests/**"
+        />
+    </target>
+	
+	
+	
+    <target name="jar" depends="clean, compile">
+        <mkdir dir="${jar.dir}"/>    	
+    	<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+        	<manifest>
+        	    <!--  <attribute name="Main-Class"   value="com.wolfram.links.rlink.tests.rtest"/>    -->    		  
+        		<attribute name="Class-Path" value= "jna.jar commons-compress-1.2.jar log4j-1.2.16.jar"/>
+        	</manifest>
+        </jar>
+    </target>
+	
+	
+	  	
+
+</project>
