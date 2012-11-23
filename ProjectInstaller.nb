@@ -10,22 +10,22 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     94227,       2584]
-NotebookOptionsPosition[     85488,       2302]
-NotebookOutlinePosition[     86205,       2328]
-CellTagsIndexPosition[     86119,       2323]
+NotebookDataLength[    196776,       5391]
+NotebookOptionsPosition[    177487,       4785]
+NotebookOutlinePosition[    178684,       4823]
+CellTagsIndexPosition[    178511,       4816]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["ProjectInstaller", "Subsection",
+Cell["ProjectInstaller", "Section",
  CellChangeTimes->{{3.56258966928125*^9, 3.5625896772958984`*^9}}],
 
 Cell[CellGroupData[{
 
-Cell["Code", "Subsubsection",
+Cell["Code", "Subsection",
  CellChangeTimes->{{3.5625207852041016`*^9, 3.562520785649414*^9}}],
 
 Cell[BoxData[{
@@ -38,17 +38,31 @@ Cell[BoxData[{
 
 Cell[BoxData[
  RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Todo", ":", " ", 
+    RowBox[{"replace", " ", "this", " ", "with", " ", "a", " ", 
+     RowBox[{"Throw", "[", "$Failed", "]"}], " ", "definition"}]}], " ", 
+   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"$projectJarLocations", " ", "=", " ", 
-    RowBox[{"{", "\[IndentingNewLine]", 
-     RowBox[{
-     "\"\<C:\\\\Users\\\\Archie\\\\WolframWorkspaces\\\\Alt\\\\\
-ProjectInstaller\\\\javaOutput\\\\Build\\\\jar\\\\ProjectInstaller.jar\>\"", 
-      ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"$projectJarLocations", " ", "=", " ", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
       "\"\<C:\\\\Users\\\\Archie\\\\WolframWorkspaces\\\\Alt\\\\\
+ProjectInstaller\\\\javaOutput\\\\Build\\\\jar\\\\ProjectInstaller.jar\>\"", 
+       ",", "\[IndentingNewLine]", 
+       "\"\<C:\\\\Users\\\\Archie\\\\WolframWorkspaces\\\\Alt\\\\\
 ProjectInstaller\\\\ProjectInstaller\\\\Java\>\""}], "\[IndentingNewLine]", 
-     "}"}]}], ";"}], "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->{{3.562518404145508*^9, 3.5625184337529297`*^9}}],
+      "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"$destinationDirectory", "=", " ", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{"$UserBaseDirectory", ",", " ", "\"\<Applications\>\""}], 
+       "}"}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.562518404145508*^9, 3.5625184337529297`*^9}, {
+  3.5626698795859375`*^9, 3.562669892631836*^9}, {3.562680632881836*^9, 
+  3.5626806542285156`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -108,12 +122,13 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"SetAttributes", "[", 
-     RowBox[{"shortCircuitFail", ",", " ", "HoldAll"}], "]"}], ";"}], 
+     RowBox[{"shortCircuitFail", ",", " ", "HoldRest"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"shortCircuitFail", "[", 
-      RowBox[{"code_", ",", "rest___"}], "]"}], ":=", "\[IndentingNewLine]", 
+      RowBox[{"funName_Symbol", ",", "code_", ",", "rest___"}], "]"}], ":=", 
+     "\[IndentingNewLine]", 
      RowBox[{"With", "[", 
       RowBox[{
        RowBox[{"{", 
@@ -124,7 +139,7 @@ Cell[BoxData[
          RowBox[{"Throw", "[", "\[IndentingNewLine]", 
           RowBox[{"$Failed", ",", "\[IndentingNewLine]", 
            RowBox[{"error", "[", "\[IndentingNewLine]", 
-            RowBox[{"shortCircuitFail", ",", "\[IndentingNewLine]", 
+            RowBox[{"funName", ",", "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{"Hold", "[", "code", "]"}], "/.", 
               RowBox[{"var_Symbol", "\[RuleDelayed]", 
@@ -142,14 +157,16 @@ Cell[BoxData[
             RowBox[{"Length", "[", 
              RowBox[{"Hold", "[", "rest", "]"}], "]"}], "\[Equal]", "0"}], 
            ",", "res", ",", 
-           RowBox[{"shortCircuitFail", "[", "rest", "]"}]}], "]"}]}], 
+           RowBox[{"shortCircuitFail", "[", 
+            RowBox[{"funName", ",", "rest"}], "]"}]}], "]"}]}], 
         "\[IndentingNewLine]", "]"}]}], "]"}]}], ";"}]}]}]], "Input",
  CellChangeTimes->{{3.562600091901367*^9, 3.5626001334560547`*^9}, {
   3.5626001870927734`*^9, 3.562600282421875*^9}, {3.562601977743164*^9, 
   3.5626020362783203`*^9}, {3.5626020795898438`*^9, 3.5626021284970703`*^9}, {
   3.56260222503125*^9, 3.5626023072714844`*^9}, {3.562602349939453*^9, 
   3.5626023549921875`*^9}, {3.5626028388251953`*^9, 3.5626028389746094`*^9}, {
-  3.562609059459961*^9, 3.562609082239258*^9}}],
+  3.562609059459961*^9, 3.562609082239258*^9}, {3.562670671629883*^9, 
+  3.5626707270751953`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -216,11 +233,14 @@ Cell[BoxData[{
          RowBox[{
           RowBox[{"makeTemporaryDirectoryName", "::", "maxit"}], ",", "lim"}],
           "]"}], ";", "\[IndentingNewLine]", 
-        RowBox[{"Return", "[", "$Failed", "]"}]}]}], "\[IndentingNewLine]", 
-      "]"}], ";", "\[IndentingNewLine]", "tempDir"}]}], "]"}]}]}], "Input",
+        RowBox[{"Throw", "[", 
+         RowBox[{"$Failed", ",", " ", 
+          RowBox[{"error", "[", "makeTemporaryDirectoryName", "]"}]}], 
+         "]"}]}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     "tempDir"}]}], "]"}]}]}], "Input",
  CellChangeTimes->{{3.5625070131757812`*^9, 3.562507023794922*^9}, {
   3.5625070573691406`*^9, 3.5625072225126953`*^9}, {3.5625072780253906`*^9, 
-  3.5625076469970703`*^9}}],
+  3.5625076469970703`*^9}, {3.5626762779833984`*^9, 3.5626763097285156`*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -236,6 +256,11 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
+     RowBox[{"extractArchive", "::", "nojars"}], " ", "=", " ", 
+     "\"\<Can not find the project's jars\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
      RowBox[{"extractArchive", "[", 
       RowBox[{"source_", ",", "dest_", ",", 
        RowBox[{"type_:", "\"\<ZIP\>\""}]}], "]"}], ":=", 
@@ -248,56 +273,120 @@ Cell[BoxData[
        RowBox[{"Module", "[", 
         RowBox[{
          RowBox[{"{", 
-          RowBox[{"javaError", ",", "javaExtractor"}], "}"}], ",", 
+          RowBox[{"javaError", ",", "javaExtractor", ",", "jarlocations"}], 
+          "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Note", ":", " ", 
+           RowBox[{"a", " ", "global", " ", "variable"}]}], " ", "*)"}], 
          "\[IndentingNewLine]", 
-         RowBox[{"JavaBlock", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"javaExtractor", "=", " ", 
-            RowBox[{"Quiet", "@", 
-             RowBox[{
-             "JavaNew", "[", "\"\<org.lshifr.arch.ZipTarExtractor\>\"", 
-              "]"}]}]}], ";", "\[IndentingNewLine]", 
-           RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"jarlocations", " ", "=", " ", "$projectJarLocations"}], 
+          ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
             RowBox[{
-             RowBox[{"javaExtractor", " ", "===", " ", "$Failed"}], ",", 
-             "\[IndentingNewLine]", 
-             RowBox[{"Return", "[", "$Failed", "]"}]}], "\[IndentingNewLine]",
-             "]"}], ";", "\[IndentingNewLine]", 
-           RowBox[{"With", "[", 
-            RowBox[{
-             RowBox[{"{", 
-              RowBox[{"method", " ", "=", " ", "\[IndentingNewLine]", 
-               RowBox[{"Switch", "[", 
+             RowBox[{"!", 
+              RowBox[{"MatchQ", "[", 
+               RowBox[{"jarlocations", ",", " ", 
+                RowBox[{"{", "__String", "}"}]}], "]"}]}], 
+             "\[IndentingNewLine]", "||", 
+             RowBox[{"!", 
+              RowBox[{"And", "@@", 
+               RowBox[{"Map", "[", "\[IndentingNewLine]", 
                 RowBox[{
-                "type", ",", "\[IndentingNewLine]", "\"\<ZIP\>\"", ",", 
-                 "\[IndentingNewLine]", "\t", "unZip", ",", 
-                 "\[IndentingNewLine]", "\"\<GZIP\>\"", ",", 
-                 "\[IndentingNewLine]", "\t", "unGzip", ",", 
-                 "\[IndentingNewLine]", "\"\<TAR\>\"", ",", 
-                 "\[IndentingNewLine]", "\t", "unTar", ",", 
-                 "\[IndentingNewLine]", "_", ",", "\[IndentingNewLine]", "\t", 
-                 RowBox[{"Throw", "[", 
-                  RowBox[{"$Failed", ",", " ", 
-                   RowBox[{"error", "[", "extractArchive", "]"}]}], "]"}]}], 
-                "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}], 
-             ",", "\[IndentingNewLine]", 
-             RowBox[{"javaError", " ", "=", " ", 
-              RowBox[{"javaExtractor", "@", 
-               RowBox[{"method", "[", 
-                RowBox[{"source", ",", "dest"}], "]"}]}]}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"If", "[", 
-            RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"DirectoryQ", "[", "#", "]"}], "||", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"FileExistsQ", "[", "#", "]"}], "&&", 
+                    RowBox[{
+                    RowBox[{"ToLowerCase", "[", 
+                    RowBox[{"FileExtension", "[", "#", "]"}], "]"}], "===", 
+                    "\"\<jar\>\""}]}], ")"}]}], "&"}], ",", 
+                 "\[IndentingNewLine]", "jarlocations"}], 
+                "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "||", 
              RowBox[{
-              RowBox[{"javaError", "@", "msg"}], "=!=", "\"\<Success\>\""}], 
-             ",", "$Failed", ",", " ", "dest"}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}]}], "]"}]}], "]"}]}], 
+              RowBox[{"AddToClassPath", "@@", "jarlocations"}], " ", "===", 
+              "$Failed"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Message", "[", 
+              RowBox[{"extractArchive", "::", "nojars"}], " ", "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Throw", "[", 
+              RowBox[{"$Failed", ",", " ", 
+               RowBox[{"error", "[", 
+                RowBox[{"extractArchive", ",", "\"\<no_jars\>\""}], "]"}]}], 
+              "]"}]}]}], "\[IndentingNewLine]", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"JavaBlock", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"javaExtractor", "=", " ", 
+             RowBox[{"Quiet", "@", 
+              RowBox[{
+              "JavaNew", "[", "\"\<org.lshifr.arch.ZipTarExtractor\>\"", 
+               "]"}]}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"javaExtractor", " ", "===", " ", "$Failed"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Throw", "[", 
+                RowBox[{"$Failed", ",", " ", 
+                 RowBox[{"error", "[", 
+                  RowBox[{
+                  "extractArchive", ",", 
+                   "\"\<can_not_create_java_class\>\""}], "]"}]}], "]"}], 
+               ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"With", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"method", " ", "=", " ", "\[IndentingNewLine]", 
+                RowBox[{"Switch", "[", 
+                 RowBox[{
+                 "type", ",", "\[IndentingNewLine]", "\"\<ZIP\>\"", ",", 
+                  "\[IndentingNewLine]", "\t", "unZip", ",", 
+                  "\[IndentingNewLine]", "\"\<GZIP\>\"", ",", 
+                  "\[IndentingNewLine]", "\t", "unGzip", ",", 
+                  "\[IndentingNewLine]", "\"\<TAR\>\"", ",", 
+                  "\[IndentingNewLine]", "\t", "unTar", ",", 
+                  "\[IndentingNewLine]", "_", ",", "\[IndentingNewLine]", 
+                  "\t", 
+                  RowBox[{"Throw", "[", 
+                   RowBox[{"$Failed", ",", " ", 
+                    RowBox[{"error", "[", "extractArchive", "]"}]}], "]"}]}], 
+                 "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}],
+               ",", "\[IndentingNewLine]", 
+              RowBox[{"javaError", " ", "=", " ", 
+               RowBox[{"javaExtractor", "@", 
+                RowBox[{"method", "[", 
+                 RowBox[{"source", ",", "dest"}], "]"}]}]}]}], 
+             "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"javaError", "@", "msg"}], "=!=", "\"\<Success\>\""}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{"Throw", "[", 
+               RowBox[{"$Failed", ",", 
+                RowBox[{"error", "[", 
+                 RowBox[{"extractArchive", ",", " ", 
+                  RowBox[{"javaError", "@", "msg"}]}], "]"}]}], "]"}], ",", 
+              "\[IndentingNewLine]", " ", "dest"}], "\[IndentingNewLine]", 
+             "]"}]}], "\[IndentingNewLine]", "]"}]}]}], "]"}]}], "]"}]}], 
     ";"}]}]}]], "Input",
  CellChangeTimes->{{3.5625188849228516`*^9, 3.5625191672460938`*^9}, {
   3.562603912459961*^9, 3.5626039432666016`*^9}, {3.562603987321289*^9, 
   3.5626040235527344`*^9}, {3.562604272845703*^9, 3.562604275330078*^9}, {
   3.5626046916210938`*^9, 3.5626046986220703`*^9}, {3.562604731711914*^9, 
-  3.562604752623047*^9}}],
+  3.562604752623047*^9}, {3.562674322182617*^9, 3.562674380852539*^9}, {
+  3.56267520696875*^9, 3.5626752425039062`*^9}, {3.562675597814453*^9, 
+  3.5626756306933594`*^9}, {3.562680093758789*^9, 3.562680117357422*^9}, {
+  3.562680154663086*^9, 3.5626804336533203`*^9}, {3.5626806928789062`*^9, 
+  3.5626807161464844`*^9}, {3.5626807721191406`*^9, 3.562680773703125*^9}, {
+  3.562680810533203*^9, 3.562680889595703*^9}, {3.5626809261240234`*^9, 
+  3.562680932390625*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -453,23 +542,41 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"ClearAll", "[", "uninstallProject", "]"}], 
+  RowBox[{"ClearAll", "[", "projectUninstall", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{
-    RowBox[{"uninstallProject", "[", 
-     RowBox[{"prdir_", ",", "prname_"}], "]"}], "/;", 
-    RowBox[{"projectAlreadyExistsQ", "[", 
-     RowBox[{"prdir", ",", "prname"}], "]"}]}], ":=", "\[IndentingNewLine]", 
-   RowBox[{"DeleteDirectory", "[", 
+   RowBox[{"Options", "[", "projectUninstall", "]"}], "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
     RowBox[{
-     RowBox[{"FileNameJoin", "[", 
-      RowBox[{"{", 
-       RowBox[{"prdir", ",", "prname"}], "}"}], "]"}], ",", 
-     RowBox[{"DeleteContents", "\[Rule]", "True"}]}], "]"}]}], 
-  ";"}]}], "Input",
- CellChangeTimes->{{3.5625174837304688`*^9, 3.5625175863359375`*^9}}],
+    "DestinationDirectory", " ", "\[RuleDelayed]", "$destinationDirectory"}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"projectUninstall", "[", 
+    RowBox[{"prname_", ",", 
+     RowBox[{"opts", ":", 
+      RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prdir", " ", "=", " ", 
+       RowBox[{"OptionValue", "[", "DestinationDirectory", "]"}]}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"DeleteDirectory", "[", 
+       RowBox[{
+        RowBox[{"FileNameJoin", "[", 
+         RowBox[{"{", 
+          RowBox[{"prdir", ",", "prname"}], "}"}], "]"}], ",", 
+        RowBox[{"DeleteContents", "\[Rule]", "True"}]}], "]"}], "/;", 
+      RowBox[{"projectAlreadyExistsQ", "[", 
+       RowBox[{"prdir", ",", "prname"}], "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5625174837304688`*^9, 3.5625175863359375`*^9}, {
+  3.562669729538086*^9, 3.562669808961914*^9}, {3.562669849836914*^9, 
+  3.562669851319336*^9}, {3.5626699064492188`*^9, 3.5626699705029297`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -488,7 +595,7 @@ Cell[BoxData[{
            RowBox[{"Unevaluated", "[", "#", "]"}], ",", "InputForm"}], "]"}], 
          ",", "HoldAll"}], "]"}], "@@", "code"}], ",", 
       RowBox[{"\"\<;\>\"", "\[RuleDelayed]", "\"\<;\\n\>\""}]}], "]"}]}], 
-   ";"}], "\[IndentingNewLine]"}], "\n", 
+   ";"}], "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Clear", "[", "saveCode", "]"}], ";"}], "\n", 
  RowBox[{
@@ -552,7 +659,7 @@ Cell[BoxData[{
      RowBox[{"src_String", "?", "FileExistsQ"}], ",", "dest_String"}], "]"}], 
    ":=", "\[IndentingNewLine]", 
    RowBox[{"shortCircuitFail", "[", "\[IndentingNewLine]", 
-    RowBox[{
+    RowBox[{"moveFile", ",", "\[IndentingNewLine]", 
      RowBox[{"CopyFile", "[", 
       RowBox[{"src", ",", "dest"}], "]"}], ",", "\[IndentingNewLine]", 
      RowBox[{"DeleteFile", "[", "src", "]"}], ",", "\[IndentingNewLine]", 
@@ -564,7 +671,8 @@ Cell[BoxData[{
     RowBox[{"$Failed", ",", " ", 
      RowBox[{"error", "[", "moveFile", "]"}]}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.562609880036133*^9, 3.562610014513672*^9}, {
-  3.562610088359375*^9, 3.5626100912998047`*^9}}],
+  3.562610088359375*^9, 3.5626100912998047`*^9}, {3.562670744666992*^9, 
+  3.562670751661133*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -680,7 +788,7 @@ Cell[BoxData[{
       RowBox[{"initFile", ",", "targetProjectDir"}], " ", "}"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{"shortCircuitFail", "[", "\[IndentingNewLine]", 
-      RowBox[{
+      RowBox[{"buildProjectLayout", ",", "\[IndentingNewLine]", 
        RowBox[{"targetProjectDir", " ", "=", 
         RowBox[{"FileNameJoin", "[", 
          RowBox[{"{", " ", 
@@ -706,7 +814,8 @@ Cell[BoxData[{
    3.562598800067383*^9}, {3.5625988340683594`*^9, 3.5625988516728516`*^9}, {
    3.5625991309541016`*^9, 3.5625991316621094`*^9}, {3.5625991720234375`*^9, 
    3.562599190760742*^9}, {3.5625994168935547`*^9, 3.5625994871103516`*^9}, {
-   3.5626031642001953`*^9, 3.562603200852539*^9}}],
+   3.5626031642001953`*^9, 3.562603200852539*^9}, {3.5626707582529297`*^9, 
+   3.5626707640185547`*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -844,6 +953,17 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
+   RowBox[{"Options", "[", "withTemporaryDirectory", "]"}], " ", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"FailIfExists", " ", "\[Rule]", " ", "True"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"FailIfCanNotDelete", " ", "\[Rule]", " ", "False"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"CreateIfDoesNotExist", " ", "\[Rule]", " ", "True"}]}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
    RowBox[{"withTemporaryDirectory", "::", "nodel"}], " ", "=", " ", 
    "\"\<Warning: unable to delete temporary directory `1`\>\""}], 
   ";"}], "\[IndentingNewLine]", 
@@ -853,6 +973,10 @@ Cell[BoxData[{
    "\"\<Unable to create temporary directory `1`\>\""}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{
+   RowBox[{"withTemporaryDirectory", "::", "exists"}], " ", "=", " ", 
+   "\"\<The directory `1` already exists\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{"SetAttributes", "[", 
    RowBox[{"withTemporaryDirectory", ",", "HoldRest"}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
@@ -860,35 +984,205 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{
     RowBox[{"withTemporaryDirectory", "[", 
-     RowBox[{"tempDir_String", ",", "code_"}], "]"}], ":=", 
+     RowBox[{"tempDir_String", ",", "code_", ",", 
+      RowBox[{"opts", ":", 
+       RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
     "\[IndentingNewLine]", 
-    RowBox[{"If", "[", 
+    RowBox[{"Module", "[", 
      RowBox[{
+      RowBox[{"{", 
+       RowBox[{"deleted", ",", "result"}], "}"}], ",", "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"Quiet", "@", 
-        RowBox[{"CreateDirectory", "[", "tempDir", "]"}]}], "===", 
-       "$Failed"}], ",", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"Message", "[", 
+       RowBox[{"If", "[", 
         RowBox[{
-         RowBox[{"withTemporaryDirectory", "::", "nocreate"}], ",", 
-         "tempDir"}], "]"}], ";", "\[IndentingNewLine]", "$Failed"}], ",", 
-      "\[IndentingNewLine]", 
-      RowBox[{"CleanUp", "[", 
-       RowBox[{"code", ",", "\[IndentingNewLine]", 
-        RowBox[{"If", "[", 
-         RowBox[{
+         RowBox[{"DirectoryQ", "[", "tempDir", "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"DeleteDirectory", "[", 
-            RowBox[{"tempDir", ",", 
-             RowBox[{"DeleteContents", "\[Rule]", "True"}]}], "]"}], "===", 
-           "$Failed"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"TrueQ", "[", 
+            RowBox[{"OptionValue", "[", "FailIfExists", "]"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Message", "[", 
+             RowBox[{
+              RowBox[{"withTemporaryDirectory", "::", "exists"}], ",", 
+              "tempDir"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Throw", "[", 
+             RowBox[{"$Failed", ",", " ", 
+              RowBox[{"error", "[", "withTemporaryDirectory", "]"}]}], 
+             "]"}]}]}], "\[IndentingNewLine]", "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "else", " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"TrueQ", "[", 
+             RowBox[{"OptionValue", "[", "CreateIfDoesNotExist", "]"}], "]"}],
+             "&&", " ", 
+            RowBox[{
+             RowBox[{"Quiet", "@", 
+              RowBox[{"CreateDirectory", "[", "tempDir", "]"}]}], "===", 
+             "$Failed"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Message", "[", 
+             RowBox[{
+              RowBox[{"withTemporaryDirectory", "::", "nocreate"}], ",", 
+              "tempDir"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Throw", "[", 
+             RowBox[{"$Failed", ",", " ", 
+              RowBox[{"error", "[", "withTemporaryDirectory", "]"}]}], 
+             "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"result", " ", "=", " ", "\[IndentingNewLine]", 
+        RowBox[{"CleanUp", "[", "\[IndentingNewLine]", 
+         RowBox[{"code", ",", "\[IndentingNewLine]", 
+          RowBox[{"deleted", " ", "=", 
+           RowBox[{"Quiet", "@", 
+            RowBox[{"DeleteDirectory", "[", 
+             RowBox[{"tempDir", ",", 
+              RowBox[{"DeleteContents", "\[Rule]", "True"}]}], "]"}]}]}]}], 
+         "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"deleted", "===", "$Failed"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
           RowBox[{"Message", "[", 
            RowBox[{
             RowBox[{"withTemporaryDirectory", "::", "nodel"}], ",", 
-            "tempDir"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], "]"}]}], 
-     "]"}]}], ";"}], " "}]}], "Input",
- CellChangeTimes->{{3.5626082924570312`*^9, 3.562608598678711*^9}}],
+            "tempDir"}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"TrueQ", "[", 
+             RowBox[{"OptionValue", "[", "FailIfCanNotDelet", "]"}], "]"}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"Throw", "[", 
+             RowBox[{"$Failed", ",", " ", 
+              RowBox[{"error", "[", "withTemporaryDirectory", "]"}]}], 
+             "]"}]}], "\[IndentingNewLine]", "]"}]}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "result"}]}], "]"}]}], ";"}], " "}]}], "Input",
+ CellChangeTimes->{{3.5626082924570312`*^9, 3.562608598678711*^9}, {
+  3.562676810901367*^9, 3.562676853366211*^9}, {3.562676933626953*^9, 
+  3.5626770474541016`*^9}, {3.562677077739258*^9, 3.5626770932626953`*^9}, {
+  3.5626771298759766`*^9, 3.562677271665039*^9}, {3.562677320017578*^9, 
+  3.5626773354804688`*^9}, {3.562677397895508*^9, 3.5626775208828125`*^9}, {
+  3.5626776686572266`*^9, 3.562677706080078*^9}, {3.5626777670302734`*^9, 
+  3.5626777784746094`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Assume", " ", 
+    RowBox[{"one", " ", ".", "tar"}], " ", "file", " ", "in", " ", "the", " ",
+     "archive"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ClearAll", "[", "unGZipProject", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"unGZipProject", "[", 
+      RowBox[{"gzipPath_", ",", "tempDir_"}], "]"}], ":=", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"ungzipped", ",", " ", "files"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"shortCircuitFail", "[", "\[IndentingNewLine]", 
+        RowBox[{"unGZipProject", ",", "\[IndentingNewLine]", 
+         RowBox[{"ungzipped", "=", " ", 
+          RowBox[{"extractArchive", "[", 
+           RowBox[{"gzipPath", ",", "tempDir", ",", "\"\<GZIP\>\""}], "]"}]}],
+          ",", "\[IndentingNewLine]", 
+         RowBox[{"check", "[", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"files", " ", "=", " ", 
+             RowBox[{"FileNames", "[", 
+              RowBox[{"\"\<*.tar\>\"", ",", 
+               RowBox[{"{", "ungzipped", "}"}]}], "]"}]}], "]"}], "\[Equal]", 
+           "1"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"First", "@", "files"}]}], "\[IndentingNewLine]", "]"}]}], 
+      "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.562670351455078*^9, 3.5626705732685547`*^9}, {
+  3.5626739569990234`*^9, 3.5626739622109375`*^9}, {3.5626740918378906`*^9, 
+  3.5626740930185547`*^9}, {3.5626747070253906`*^9, 3.5626747263964844`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Assume", " ", "one", " ", "directory", " ", "in", " ", 
+     RowBox[{"the", " ", ".", "tar"}], " ", 
+     RowBox[{"archive", ".", " ", "There"}], " ", "can", " ", "also", " ", 
+     "be", " ", "files"}], ",", " ", 
+    RowBox[{"they", " ", "will", " ", "be", " ", "ignored"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ClearAll", "[", "unTarProject", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"unTarProject", "[", 
+      RowBox[{"tarPath_", ",", "tempDir_"}], "]"}], ":=", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"untarred", ",", " ", "dirs"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"shortCircuitFail", "[", "\[IndentingNewLine]", 
+        RowBox[{"unTarProject", ",", "\[IndentingNewLine]", 
+         RowBox[{"untarred", "=", " ", 
+          RowBox[{"extractArchive", "[", 
+           RowBox[{"tarPath", ",", "tempDir", ",", "\"\<TAR\>\""}], "]"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"check", "[", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"dirs", "=", " ", 
+             RowBox[{"Select", "[", 
+              RowBox[{
+               RowBox[{"FileNames", "[", 
+                RowBox[{"\"\<*\>\"", ",", 
+                 RowBox[{"{", "untarred", "}"}]}], "]"}], ",", "DirectoryQ"}],
+               "]"}]}], "]"}], "\[Equal]", "1"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"First", "@", "dirs"}]}], "\[IndentingNewLine]", "]"}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.562674520432617*^9, 3.5626746034609375`*^9}, {
+  3.562674648390625*^9, 3.562674690698242*^9}, {3.562674729051758*^9, 
+  3.5626747674160156`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "extractTarGzippedProject", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"extractTarGzippedProject", "[", 
+    RowBox[{
+     RowBox[{"path_String", "?", "FileExistsQ"}], ",", "tempBaseDir_String"}],
+     "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "tempTarDir", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tempTarDir", " ", "=", " ", 
+       RowBox[{"makeTemporaryDirectoryName", "[", "tempBaseDir", "]"}]}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"withTemporaryDirectory", "[", "\[IndentingNewLine]", 
+       RowBox[{"tempTarDir", ",", "\[IndentingNewLine]", 
+        RowBox[{"unTarProject", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"unGZipProject", "[", 
+           RowBox[{"path", ",", "tempTarDir"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"makeTemporaryDirectoryName", "[", "tempBaseDir", "]"}]}], 
+         "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"CreateIfDoesNotExist", " ", "\[Rule]", " ", "False"}]}], 
+       "\[IndentingNewLine]", "]"}]}]}], "]"}]}], ";"}]}], "Input"],
 
 Cell[BoxData[{
  RowBox[{
@@ -906,30 +1200,435 @@ Cell[BoxData[{
      RowBox[{"var", "=", "value"}]}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.562608874361328*^9, 3.562608874364258*^9}}],
 
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileExtension", "[", "\"\<test.tar.gz\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.5626810646132812`*^9, 3.562681075645508*^9}}],
+
+Cell[BoxData["\<\"gz\"\>"], "Output",
+ CellChangeTimes->{3.562681076001953*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileBaseName", "[", "\"\<test.tar.gz\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.562681155805664*^9, 3.5626811649765625`*^9}}],
+
+Cell[BoxData["\<\"test.tar\"\>"], "Output",
+ CellChangeTimes->{3.5626811653564453`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileExtension", "[", "\"\<abc\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.562689384935547*^9, 3.5626893922460938`*^9}}],
+
+Cell[BoxData["\<\"\"\>"], "Output",
+ CellChangeTimes->{3.5626893925820312`*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "getProjectType", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getProjectType", "[", "path_String", "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"type", "=", " ", "\[IndentingNewLine]", 
+       RowBox[{"Switch", "[", 
+        RowBox[{
+         RowBox[{"ToLowerCase", "@", 
+          RowBox[{"FileExtension", "[", "path", "]"}]}], ",", 
+         "\[IndentingNewLine]", "\"\<zip\>\"", ",", "\[IndentingNewLine]", 
+         "\t", "\"\<ZIP\>\"", ",", "\[IndentingNewLine]", "\"\<gz\>\"", ",", 
+         "\[IndentingNewLine]", "\t", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ToLowerCase", "@", 
+             RowBox[{"FileExtension", "[", 
+              RowBox[{"FileBaseName", "[", "path", "]"}], "]"}]}], "===", 
+            "\"\<tar\>\""}], ",", "\[IndentingNewLine]", "\t\t", 
+           "\"\<TARGZ\>\"", ",", "\[IndentingNewLine]", "\t\t", "$Failed"}], 
+          "\[IndentingNewLine]", "\t", "]"}], ",", "\[IndentingNewLine]", "_",
+          ",", "\[IndentingNewLine]", "\t", "$Failed"}], "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", "type"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getProjectType", "[", "___", "]"}], ":=", 
+   RowBox[{"Throw", "[", 
+    RowBox[{"$Failed", ",", " ", 
+     RowBox[{"error", "[", "getProjectType", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5626812703378906`*^9, 3.5626813918408203`*^9}, 
+   3.562689419868164*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "javaIterate", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"javaIterate", ",", "HoldAll"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"javaIterate", "[", 
+     RowBox[{"var_Symbol", ",", "code_"}], "]"}], "[", 
+    RowBox[{"iteratorInstance_", "?", "JavaObjectQ"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{"iteratorInstance", "@", 
+      RowBox[{"hasNext", "[", "]"}]}], ",", 
+     RowBox[{"With", "@@", 
+      RowBox[{"Hold", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"var", "=", 
+          RowBox[{"iteratorInstance", "@", 
+           RowBox[{"next", "[", "]"}]}]}], "}"}], ",", "code"}], "]"}]}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"javaIterate", "[", "___", "]"}], "[", "___", "]"}], ":=", 
+    RowBox[{"Throw", "[", 
+     RowBox[{"$Failed", ",", 
+      RowBox[{"error", "[", "javaIterate", "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"ClearAll", "[", 
+   RowBox[{"save", ",", "collect"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"save", "=", "Sow"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"collect", ",", "HoldAll"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"collect", "[", "code_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"#", "===", 
+        RowBox[{"{", "}"}]}], ",", "#", ",", 
+       RowBox[{"First", "@", "#"}]}], "]"}], "&"}], "@", 
+    RowBox[{
+     RowBox[{"Reap", "[", "code", "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}]}]}], ";"}], "\n"}], "Input",
+ CellChangeTimes->{{3.562686116419922*^9, 3.5626861348808594`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "getHTTPHeaderFields", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getHTTPHeaderFields", "[", 
+    RowBox[{"urlConnection_", "?", "JavaObjectQ"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "entry", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"JavaBlock", "[", "\[IndentingNewLine]", 
+      RowBox[{"With", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"iter", "=", " ", 
+          RowBox[{"urlConnection", "@", 
+           RowBox[{
+            RowBox[{"getHeaderFields", "[", "]"}], "@", 
+            RowBox[{
+             RowBox[{"keySet", "[", "]"}], "@", 
+             RowBox[{"iterator", "[", "]"}]}]}]}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"#", "=!=", 
+             RowBox[{"{", "}"}]}], ",", 
+            RowBox[{"Rest", "[", "#", "]"}], ",", "#"}], "]"}], "&"}], "@", 
+         RowBox[{"collect", "@", 
+          RowBox[{
+           RowBox[{"javaIterate", "[", 
+            RowBox[{"entry", ",", 
+             RowBox[{"save", "[", "entry", "]"}]}], "]"}], "[", "iter", 
+           "]"}]}]}]}], "]"}], "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getHTTPHeaderFields", "[", "___", "]"}], ":=", 
+   RowBox[{"Throw", "[", 
+    RowBox[{"$Failed", ",", " ", 
+     RowBox[{"error", "[", "getHTTPHeaderFields", "]"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.562685953256836*^9, 3.562686048239258*^9}, {
+  3.562686145868164*^9, 3.5626862475839844`*^9}, {3.562686369946289*^9, 
+  3.5626863868828125`*^9}, {3.562687071470703*^9, 3.5626871063427734`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "getAttachementFileName", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"getAttachementFileName", "[", "urlString_String", "]"}], ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"JavaBlock", "[", "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"url", ",", "uconn", ",", "result"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"url", "=", " ", 
+         RowBox[{"JavaNew", "[", 
+          RowBox[{"\"\<java.net.URL\>\"", ",", "urlString"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"uconn", " ", "=", 
+         RowBox[{"url", "@", 
+          RowBox[{"openConnection", "[", "]"}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"uconn", " ", "@", 
+         RowBox[{"setFollowRedirects", "[", "True", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"CleanUp", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"uconn", "@", 
+            RowBox[{"connect", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"getAttachementFileName", "[", "uconn", "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"uconn", "@", 
+           RowBox[{"disconnect", "[", "]"}]}]}], "\[IndentingNewLine]", 
+         "]"}]}]}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getAttachementFileName", "[", 
+    RowBox[{"urlConnection_", "?", "JavaObjectQ"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"headerFields", ",", " ", "content", ",", "filename"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"headerFields", "=", 
+       RowBox[{"getHTTPHeaderFields", "[", "urlConnection", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"MemberQ", "[", 
+          RowBox[{"headerFields", ",", "\"\<Status\>\""}], "]"}], "&&", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"!", 
+          RowBox[{"StringFreeQ", "[", 
+           RowBox[{
+            RowBox[{"urlConnection", "@", 
+             RowBox[{"getHeaderField", "[", "\"\<Status\>\"", "]"}]}], ",", 
+            "\"\<404\>\""}], "]"}]}]}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{"Throw", "[", 
+         RowBox[{"$Failed", ",", " ", 
+          RowBox[{"error", "[", 
+           RowBox[{"getAttachementFileName", ",", "\"\<404\>\""}], "]"}]}], 
+         "]"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"headerFields", ",", " ", "\"\<Content-Disposition\>\""}], 
+         "]"}], " ", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"content", " ", "=", " ", 
+          RowBox[{"urlConnection", "@", 
+           RowBox[{
+           "getHeaderField", "[", "\"\<Content-Disposition\>\"", "]"}]}]}], 
+         ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"StringQ", "[", "content", "]"}], " ", "&&", " ", 
+            RowBox[{"!", 
+             RowBox[{"StringFreeQ", "[", 
+              RowBox[{"content", ",", " ", 
+               RowBox[{"\"\<filename=\>\"", "~~", "__"}]}], "]"}]}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"filename", " ", "=", " ", "\[IndentingNewLine]", 
+            RowBox[{"StringCases", "[", "\[IndentingNewLine]", 
+             RowBox[{"content", ",", " ", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"\"\<filename=\>\"", "~~", "x__", "~~", 
+                RowBox[{"(", 
+                 RowBox[{"Whitespace", "|", "\"\<\>\""}], ")"}]}], 
+               "\[RuleDelayed]", 
+               RowBox[{"destringify", "[", "x", "]"}]}]}], 
+             "\[IndentingNewLine]", "]"}]}]}], "]"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"ValueQ", "[", "filename", "]"}]}], "||", 
+         RowBox[{
+          RowBox[{"Length", "[", "filename", "]"}], "=!=", "1"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Throw", "[", 
+         RowBox[{"$Failed", ",", 
+          RowBox[{"error", "[", 
+           RowBox[{"getAttachementFileName", ",", "\"\<unable_to_guess\>\""}],
+            "]"}]}], "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"First", "@", "filename"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getAttachementFileName", "[", "___", "]"}], ":=", 
+   RowBox[{"Throw", "[", 
+    RowBox[{"$Failed", ",", 
+     RowBox[{"error", "[", "getAttachementFileName", "]"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.562686951649414*^9, 3.5626870693466797`*^9}, 
+   3.5626871268691406`*^9, {3.5626871765410156`*^9, 3.5626872353789062`*^9}, {
+   3.5626872683066406`*^9, 3.5626873870878906`*^9}, {3.5626875828583984`*^9, 
+   3.5626875973876953`*^9}, {3.5626876547939453`*^9, 3.562687688814453*^9}, {
+   3.562688218171875*^9, 3.562688220638672*^9}, {3.562688323859375*^9, 
+   3.5626884352626953`*^9}, {3.562688491821289*^9, 3.562688517602539*^9}, {
+   3.5626887024228516`*^9, 3.5626887049296875`*^9}, {3.562688759348633*^9, 
+   3.562688892888672*^9}, {3.5626891496572266`*^9, 3.562689198548828*^9}, {
+   3.5626895384941406`*^9, 3.562689541515625*^9}}],
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{"ClearAll", "[", "projectInstall", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"Options", "[", "projectInstall", "]"}], "=", 
-   RowBox[{"{", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"DestinationDirectory", " ", "\[RuleDelayed]", " ", 
-      RowBox[{"FileNameJoin", "[", 
-       RowBox[{"{", 
-        RowBox[{"$UserBaseDirectory", ",", " ", "\"\<Applications\>\""}], 
-        "}"}], "]"}]}], ",", "\[IndentingNewLine]", 
-     RowBox[{"TempBaseDirectory", " ", "\[RuleDelayed]", " ", "Automatic"}], 
-     ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Options", "[", "projectInstall", "]"}], "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
      RowBox[{
-     "\"\<ProjectJarLocations\>\"", "\[RuleDelayed]", " ", 
-      "$projectJarLocations"}]}], "\[IndentingNewLine]", "}"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+      RowBox[{
+      "DestinationDirectory", " ", "\[RuleDelayed]", " ", 
+       "$destinationDirectory"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"TempBaseDirectory", " ", "\[RuleDelayed]", " ", "Automatic"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<ProjectJarLocations\>\"", "\[RuleDelayed]", " ", 
+       "$projectJarLocations"}]}], "\[IndentingNewLine]", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"projectInstall", "[", 
+     RowBox[{
+      RowBox[{"URL", "[", "url_String", "]"}], ",", " ", 
+      RowBox[{"opts", ":", 
+       RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"type", " ", "=", " ", 
+         RowBox[{"getProjectType", "[", "url", "]"}]}], ",", "file"}], "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"type", " ", "===", " ", "$Failed"}], ",", " ", 
+         RowBox[{"type", " ", "=", " ", 
+          RowBox[{"getProjectType", "[", 
+           RowBox[{"getAttachementFileName", "[", "url", "]"}], "]"}]}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"type", " ", "===", " ", "$Failed"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Throw", "[", 
+          RowBox[{"$Failed", ",", " ", 
+           RowBox[{"error", "[", 
+            RowBox[{
+            "projectInstall", ",", " ", 
+             "\"\<can_not_determine_remote_type\>\""}], "]"}]}], "]"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"file", " ", "=", " ", 
+        RowBox[{"Quiet", "@", 
+         RowBox[{"FetchURL", "[", 
+          RowBox[{"url", ",", 
+           RowBox[{"FileFilters", "\[Rule]", 
+            RowBox[{"{", "}"}]}]}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"file", "  ", "===", " ", "$Failed"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Throw", "[", 
+          RowBox[{"$Failed", ",", " ", 
+           RowBox[{"error", "[", 
+            RowBox[{"projectInstall", ",", " ", "\"\<download_failure\>\""}], 
+            "]"}]}], "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"getProjectType", "[", "file", "]"}], "===", "$Failed"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"file", "=", " ", "\[IndentingNewLine]", 
+          RowBox[{"Switch", "[", 
+           RowBox[{
+           "type", ",", "\[IndentingNewLine]", "\"\<ZIP\>\"", ",", 
+            "\[IndentingNewLine]", "\t", 
+            RowBox[{"RenameFile", "[", 
+             RowBox[{"file", ",", 
+              RowBox[{"file", "<>", "\"\<.zip\>\""}]}], "]"}], ",", 
+            "\[IndentingNewLine]", "\"\<TARGZ\>\"", ",", 
+            "\[IndentingNewLine]", "\t", 
+            RowBox[{"RenameFile", "[", 
+             RowBox[{"file", ",", 
+              RowBox[{"file", "<>", "\"\<.tar.gz\>\""}]}], "]"}], ",", 
+            "\[IndentingNewLine]", "_", ",", "\[IndentingNewLine]", "\t", 
+            RowBox[{"Throw", "[", 
+             RowBox[{"$Failed", ",", " ", 
+              RowBox[{"error", "[", 
+               RowBox[{"projectInstall", ",", " ", "\"\<unknown_type\>\""}], 
+               "]"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}]}], "]"}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"projectInstall", "[", 
+        RowBox[{"file", ",", "opts"}], "]"}]}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"projectInstall", "[", 
+     RowBox[{
+      RowBox[{"path_String", "?", "FileExistsQ"}], ",", 
+      RowBox[{"opts", ":", 
+       RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"projectInstall", "[", 
+     RowBox[{"path", ",", 
+      RowBox[{"getProjectType", "[", "path", "]"}], ",", "opts"}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"projectInstall", "[", 
-    RowBox[{"path_", ",", " ", "\"\<ZIP\>\"", ",", 
+    RowBox[{
+     RowBox[{"path_String", "?", "FileExistsQ"}], ",", " ", 
+     RowBox[{"type", ":", 
+      RowBox[{"(", 
+       RowBox[{"\"\<ZIP\>\"", "|", "\"\<TARGZ\>\""}], ")"}]}], ",", 
      RowBox[{"opts", ":", 
       RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
    "\[IndentingNewLine]", 
@@ -953,20 +1652,29 @@ Cell[BoxData[{
         "ApplicationDataUserDirectory", "[", "\"\<LoadedProjects\>\"", 
          "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
       RowBox[{"shortCircuitFail", "[", "\[IndentingNewLine]", 
-       RowBox[{
+       RowBox[{"projectInstall", ",", "\[IndentingNewLine]", 
         RowBox[{"$tempDir", "=", " ", 
          RowBox[{"makeTemporaryDirectoryName", "[", "tempBaseDir", "]"}]}], 
         ",", "\[IndentingNewLine]", 
         RowBox[{"$tempLayoutDir", " ", "=", " ", 
          RowBox[{"makeTemporaryDirectoryName", "[", "tempBaseDir", "]"}]}], 
         ",", "\[IndentingNewLine]", 
-        RowBox[{"AddToClassPath", "@@", 
-         RowBox[{"OptionValue", "[", "\"\<ProjectJarLocations\>\"", "]"}]}], 
-        ",", "\[IndentingNewLine]", 
-        RowBox[{"prdir", " ", "=", " ", 
-         RowBox[{"extractZippedProject", "[", 
-          RowBox[{"path", ",", "$tempDir"}], "]"}]}], ",", 
-        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"AddToClassPath", "@@", 
+          RowBox[{"OptionValue", "[", "\"\<ProjectJarLocations\>\"", "]"}]}], 
+         " ", "*)"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"prdir", " ", "=", " ", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"type", " ", "===", "\"\<ZIP\>\""}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"extractZippedProject", "[", 
+            RowBox[{"path", ",", "$tempDir"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", "else", " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"extractTarGzippedProject", "[", 
+            RowBox[{"path", ",", "tempBaseDir"}], "]"}]}], 
+          "\[IndentingNewLine]", "]"}]}], ",", "\[IndentingNewLine]", 
         RowBox[{"projectName", " ", "=", " ", 
          RowBox[{"determineProjectName", "[", "prdir", "]"}]}], ",", 
         "\[IndentingNewLine]", 
@@ -978,7 +1686,7 @@ Cell[BoxData[{
         RowBox[{"withTemporaryDirectory", "[", "\[IndentingNewLine]", 
          RowBox[{"$tempLayoutDir", ",", "\[IndentingNewLine]", 
           RowBox[{"shortCircuitFail", "[", "\[IndentingNewLine]", 
-           RowBox[{
+           RowBox[{"projectInstall", ",", "\[IndentingNewLine]", 
             RowBox[{"targetProjectDir", "=", " ", 
              RowBox[{"buildProjectLayout", "[", 
               RowBox[{"$tempLayoutDir", ",", "prdir", ",", "projectName"}], 
@@ -1016,13 +1724,74 @@ Cell[BoxData[{
    3.562607898838867*^9, {3.5626080303291016`*^9, 3.5626081401552734`*^9}, {
    3.5626081725625*^9, 3.562608226595703*^9}, {3.562608613126953*^9, 
    3.5626086932871094`*^9}, {3.562608796510742*^9, 3.562608803473633*^9}, {
-   3.5626088915097656`*^9, 3.56260893715625*^9}}]
+   3.5626088915097656`*^9, 3.56260893715625*^9}, 3.5626699135771484`*^9, {
+   3.562670770455078*^9, 3.5626707881054688`*^9}, {3.562675576258789*^9, 
+   3.5626755797529297`*^9}, {3.562677929649414*^9, 3.562678038067383*^9}, {
+   3.5626780843125*^9, 3.562678094057617*^9}, {3.562680968114258*^9, 
+   3.562681058991211*^9}, {3.5626810910820312`*^9, 3.5626812875058594`*^9}, {
+   3.5626813977177734`*^9, 3.5626814352939453`*^9}, {3.562681585932617*^9, 
+   3.562681637317383*^9}, {3.5626894590722656`*^9, 3.5626895070683594`*^9}, {
+   3.562689567598633*^9, 3.5626896591259766`*^9}, {3.5626897173007812`*^9, 
+   3.5626897456757812`*^9}, {3.5626898631484375`*^9, 3.562690107451172*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Examples", "Subsubsection",
+Cell["Examples", "Subsection",
  CellChangeTimes->{{3.562589691544922*^9, 3.5625896926523438`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getAttachementFileName", "[", 
+  "\"\<https://github.com/lshifr/CodeFormatter/archive/master.zip\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5626890933359375`*^9, 3.562689094727539*^9}, {
+  3.562689553908203*^9, 3.562689555538086*^9}}],
+
+Cell[BoxData["\<\"CodeFormatter-master.zip\"\>"], "Output",
+ CellChangeTimes->{3.562689096852539*^9, 3.5626892042666016`*^9, 
+  3.562689559286133*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getAttachementFileName", "[", 
+  "\"\<https://gist.github.com/gists/1869086/download\>\"", "]"}]], "Input",
+ CellChangeTimes->{
+  3.5626892344453125`*^9, {3.562689560076172*^9, 3.562689561279297*^9}}],
+
+Cell[BoxData["\<\"gist1869086-770bffdbd6b12815518c180c13920fa13acec2e6.tar.gz\
+\"\>"], "Output",
+ CellChangeTimes->{3.5626892369814453`*^9, 3.5626895628535156`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Zip projects", "Subsubsection",
+ CellChangeTimes->{{3.5626799662421875`*^9, 3.5626799690742188`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"projectInstall", "[", 
+  RowBox[{
+  "URL", "[", 
+   "\"\<https://github.com/lshifr/CodeFormatter/archive/master.zip\>\"", 
+   "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5626901424248047`*^9, 3.562690162772461*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\Applications\\\\CodeFormatter\"\>"], "Output",
+ CellChangeTimes->{3.5626901667060547`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"projectUninstall", "[", "\"\<CodeFormatter\>\"", "]"}]], "Input"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.562690192303711*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -1038,24 +1807,10 @@ Cell[BoxData[
    "]"}]}]], "Input"],
 
 Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Local\\\\Temp\\\\m-\
-2825e600-edb6-4378-816c-aaa38858911c_Temp___master.zip\"\>"], "Output",
+e9bb3034-b6b0-48f1-8bff-b1f63c67f7fa_Temp___master.zip\"\>"], "Output",
  CellChangeTimes->{3.5625947660439453`*^9, 3.5625950278203125`*^9, 
-  3.562597503194336*^9, 3.5625981471904297`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"$destinationDirectory", " ", "=", 
-  RowBox[{"FileNameJoin", "[", 
-   RowBox[{"{", 
-    RowBox[{"$UserBaseDirectory", ",", " ", "\"\<Applications\>\""}], "}"}], 
-   "]"}]}]], "Input",
- CellChangeTimes->{{3.5625948772470703`*^9, 3.5625948910117188`*^9}}],
-
-Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
-\\Applications\"\>"], "Output",
- CellChangeTimes->{3.562594891834961*^9, 3.5625950320322266`*^9}]
+  3.562597503194336*^9, 3.5625981471904297`*^9, 3.5626708806835938`*^9, 
+  3.562675034390625*^9, 3.5626781192685547`*^9, 3.5626805033535156`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1071,7 +1826,8 @@ Cell[BoxData["False"], "Output",
  CellChangeTimes->{{3.5625949021328125`*^9, 3.5625949313134766`*^9}, 
    3.562595033209961*^9, 3.5625975063964844`*^9, 3.562598131366211*^9, 
    3.562598209939453*^9, 3.562598369154297*^9, 3.562601799305664*^9, 
-   3.5626064055458984`*^9}]
+   3.5626064055458984`*^9, 3.5626708675498047`*^9, 3.5626781213779297`*^9, 
+   3.5626805043535156`*^9, 3.5626814471933594`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1085,8 +1841,29 @@ Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
 \\Applications\\\\CodeFormatter\"\>"], "Output",
  CellChangeTimes->{3.5626030051884766`*^9, 3.562603535526367*^9, 
   3.5626064072958984`*^9, 3.5626077039375*^9, 3.5626087893896484`*^9, 
-  3.5626097502128906`*^9}]
+  3.5626097502128906`*^9, 3.5626708841015625`*^9, 3.562678122638672*^9, 
+  3.5626805066503906`*^9, 3.56268075109375*^9, 3.562680786513672*^9, 
+  3.562680946723633*^9, 3.5626814597041016`*^9}]
 }, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"projectUninstall", "[", "\"\<CodeFormatter\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.5625952000126953`*^9, 3.562595228629883*^9}, {
+  3.5626699930742188`*^9, 3.5626699958203125`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"projectInstall", "[", "path", "]"}]], "Input",
+ CellChangeTimes->{3.5626815069433594`*^9}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\Applications\\\\CodeFormatter\"\>"], "Output",
+ CellChangeTimes->{3.562681507515625*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"projectUninstall", "[", "\"\<CodeFormatter\>\"", "]"}]], "Input"],
 
 Cell[BoxData[
  RowBox[{"DeleteFile", "[", "path", "]"}]], "Input",
@@ -1096,15 +1873,1516 @@ Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<CodeFormatter`\>\"", "]"}]], "Input",
  CellChangeTimes->{{3.5625950657910156`*^9, 3.5625950722070312`*^9}}],
 
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.562681491551758*^9}],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{"uninstallProject", "[", 
-  RowBox[{"$destinationDirectory", " ", ",", "\"\<CodeFormatter\>\""}], 
+ RowBox[{"projectInstall", "[", 
+  RowBox[{
+  "\"\<C:\\\\Users\\\\Archie\\\\Downloads\\\\NonGridInterpolation.zip\>\"", 
+   ",", "\"\<ZIP\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.5626138546416016`*^9, 3.5626138884541016`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\Applications\\\\NonGridInterpolation\"\>"], "Output",
+ CellChangeTimes->{3.5626138900664062`*^9, 3.5626696208984375`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"projectUninstall", "[", "\"\<NonGridInterpolation\>\"", 
   "]"}]], "Input",
- CellChangeTimes->{{3.5625952000126953`*^9, 3.562595228629883*^9}}],
+ CellChangeTimes->{{3.5626700066748047`*^9, 3.562670018314453*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["TarGz projects", "Subsubsection",
+ CellChangeTimes->{{3.5626799756679688`*^9, 3.5626799830742188`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"projectInstall", "[", 
+  RowBox[{
+  "URL", "[", "\"\<https://gist.github.com/gists/1869086/download\>\"", "]"}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.5626903169990234`*^9, 3.56269032115625*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\Applications\\\\FunctionVersionInfo\"\>"], "Output",
+ CellChangeTimes->{3.5626903246679688`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"projectUninstall", "[", "\"\<FunctionVersionInfo\>\"", 
+  "]"}]], "Input"],
 
 Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{{3.5625952478164062`*^9, 3.5625952566845703`*^9}, 
-   3.5626040799208984`*^9}],
+ CellChangeTimes->{3.562690359911133*^9}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5626903076132812`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FetchURL", "[", 
+  "\"\<https://gist.github.com/gists/1869086/download\>\"", "]"}]], "Input",
+ CellChangeTimes->{3.562689817638672*^9}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Local\\\\Temp\\\\m-\
+14c665da-88de-403c-9046-8d45e77e5e2f_Temp___download\"\>"], "Output",
+ CellChangeTimes->{3.5626898205566406`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FetchURL", "[", 
+  RowBox[{"\"\<https://gist.github.com/gists/1869086/download\>\"", ",", 
+   RowBox[{"FileFilters", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"\"\<.gz\>\"", ",", "UncompressGZIPFile"}], "}"}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5626816909746094`*^9, 3.562681691171875*^9}, {
+   3.5626817896367188`*^9, 3.562681822404297*^9}, {3.562681861491211*^9, 
+   3.5626818732402344`*^9}, {3.562681941104492*^9, 3.5626819849570312`*^9}, {
+   3.5626820799121094`*^9, 3.562682082232422*^9}, {3.562682122875*^9, 
+   3.5626821361191406`*^9}, {3.5626830636572266`*^9, 3.5626830830029297`*^9}, 
+   3.5626832130390625`*^9}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Local\\\\Temp\\\\m-\
+21595ffd-9239-4365-a1f5-941972ad142f_Temp___download\"\>"], "Output",
+ CellChangeTimes->{
+  3.562681695241211*^9, 3.5626818108183594`*^9, {3.5626819751132812`*^9, 
+   3.562681990263672*^9}, 3.5626820893496094`*^9, 3.5626830884521484`*^9, 
+   3.5626832193867188`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"UncompressGZIPFile", "=", 
+     RowBox[{
+      RowBox[{"Throw", "[", "$Failed", "]"}], "&"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+   "FetchURL", "[", "\"\<https://gist.github.com/gists/1869086/download\>\"", 
+    "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5626835904023438`*^9, 3.5626836194248047`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Local\\\\Temp\\\\m-\
+9efb7603-dfea-4781-95fc-01de055a3260_Temp___download\"\>"], "Output",
+ CellChangeTimes->{3.5626836216777344`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"gistpath", "=", 
+  RowBox[{"FetchURL", "[", 
+   RowBox[{
+   "\"\<https://gist.github.com/gists/1869086/download\>\"", ",", 
+    "\"\<gist1869086.tar.gz\>\"", ",", 
+    RowBox[{"FileFilters", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.562679749866211*^9, 3.5626797628496094`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\Documents\\\\gist1869086.tar.gz\"\>\
+"], "Output",
+ CellChangeTimes->{
+  3.5626795160302734`*^9, {3.562679754607422*^9, 3.5626797670742188`*^9}, 
+   3.562681525352539*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"projectInstall", "[", 
+  RowBox[{"gistpath", ",", "\"\<TARGZ\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.5626795304140625`*^9, 3.5626795449375*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\Applications\\\\FunctionVersionInfo\"\>"], "Output",
+ CellChangeTimes->{3.5626795520722656`*^9, 3.5626797685371094`*^9, 
+  3.5626815291376953`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"projectUninstall", "[", "\"\<FunctionVersionInfo\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5626815458847656`*^9, 3.5626815472753906`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"projectInstall", "[", "gistpath", "]"}]], "Input",
+ CellChangeTimes->{{3.562681554989258*^9, 3.5626815551445312`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\Applications\\\\FunctionVersionInfo\"\>"], "Output",
+ CellChangeTimes->{3.562681555841797*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"projectUninstall", "[", "\"\<FunctionVersionInfo\>\"", 
+  "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<FunctionVersionInfo`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.5626797807490234`*^9, 3.5626797906210938`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Needs", "::", "nocont"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Context \[NoBreak]\\!\\(\\\"FunctionVersionInfo`\\\"\\)\
+\[NoBreak] was not created when Needs was evaluated. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Needs/nocont\\\", ButtonNote -> \
+\\\"Needs::nocont\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.5626797910146484`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[
+   PanelBox[GridBox[{
+      {
+       StyleBox[
+        StyleBox[
+         DynamicBox[ToBoxes[
+           FEPrivate`FrontEndResource["FEStrings", "sizeExplanation"], 
+           StandardForm],
+          ImageSizeCache->{583., {5., 17.}}],
+         StripOnInput->False,
+         DynamicUpdating->True], "Panel",
+        StripOnInput->False,
+        Background->None]},
+      {
+       ItemBox[
+        TagBox[
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\<\"AbelianGroup\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"8\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"AbortKernels\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"7\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"Abort\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"2\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"AbortProtect\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"2\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"Abs\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"1\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"AbsoluteCurrentValue\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"6\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"AbsoluteDashing\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"{", 
+              RowBox[{"\<\"2\"\>", ",", "\<\"6\"\>"}], "}"}], "}"}]}], ",", 
+           RowBox[{"\<\"AbsoluteFileName\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"7\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"AbsoluteOptions\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"4\"\>", "}"}]}], ",", 
+           RowBox[{"\[LeftSkeleton]", "3395", "\[RightSkeleton]"}], ",", 
+           RowBox[{"\<\"$Urgent\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"1\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"$UserAddOnsDirectory\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"1\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"$UserBaseDirectory\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"5\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"$UserDocumentsDirectory\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"6\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"$UserName\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"3\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"$Version\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"1\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"$VersionNumber\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"2\"\>", "}"}]}], ",", 
+           RowBox[{"\<\"$$Media\"\>", "\[Rule]", 
+            RowBox[{"{", "\<\"1\"\>", "}"}]}]}], "}"}],
+         Short[#, 5]& ],
+        Background->GrayLevel[1],
+        BaseStyle->{Deployed -> False},
+        Frame->True,
+        FrameStyle->GrayLevel[0, 0.2],
+        StripOnInput->False]},
+      {
+       RowBox[{
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
+             StandardForm],
+            ImageSizeCache->{104., {1., 17.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 159, 24700345411753693648, 5/2],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
+             StandardForm],
+            ImageSizeCache->{115., {1., 17.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 159, 24700345411753693648, 5 2],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
+             StandardForm],
+            ImageSizeCache->{176., {5., 17.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 159, 24700345411753693648, Infinity],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
+             StandardForm],
+            ImageSizeCache->{150., {1., 17.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>FrontEndExecute[{
+            FrontEnd`SetOptions[
+            FrontEnd`$FrontEnd, 
+             FrontEnd`PreferencesSettings -> {"Page" -> "Evaluation"}], 
+            FrontEnd`FrontEndToken["PreferencesDialog"]}],
+         Evaluator->None,
+         Method->"Preemptive"]}]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxDividers->{
+      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+       "RowsIndexed" -> {}},
+     GridBoxItemSize->{
+      "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[1.2]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    DefaultBaseStyle->{},
+    FrameMargins->5],
+   Deploy,
+   DefaultBaseStyle->"Deploy"],
+  Out[159]]], "Output",
+ CellChangeTimes->{3.5626797911083984`*^9}]
+}, Closed]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5626138510185547`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Drafts", "Subsection",
+ CellChangeTimes->{{3.562690241916992*^9, 3.562690242598633*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.562690211879883*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "FetchURL"}]], "Input",
+ CellChangeTimes->{{3.5626818406523438`*^9, 3.5626818508378906`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox["\<\"FetchURL[ url, new] copies the file referenced by url to the \
+file new on the local machine. FetchURL[ url ] copies the file creating a new \
+filename. FetchURL returns the name of the temporary file used on the local \
+machine.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5626818516972656`*^9},
+ CellTags->"Info3562692651-7776880"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"FetchURL", "[", 
+          RowBox[{"Utilities`URLTools`Private`url_String", ",", 
+           RowBox[{
+           "Utilities`URLTools`Private`outFile_String", ":", "\<\"\"\>"}], 
+           ",", 
+           RowBox[{"Utilities`URLTools`Private`opts", ":", 
+            RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"ListQ", "[", "#1", "]"}], ",", 
+              RowBox[{"First", "[", "#1", "]"}], ",", "#1"}], "]"}], "&"}], 
+           ")"}], "[", 
+          RowBox[{"Utilities`URLTools`Private`FetchURLInternal", "[", 
+           RowBox[{
+           "Utilities`URLTools`Private`url", ",", 
+            "Utilities`URLTools`Private`outFile", ",", 
+            "Utilities`URLTools`Private`opts"}], "]"}], "]"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]},
+    {" "},
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"Options", "[", "FetchURL", "]"}], "=", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"FileFilters", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"{", 
+              RowBox[{"\<\".gz\"\>", ",", "UncompressGZIPFile"}], "}"}], 
+             "}"}]}], ",", 
+           RowBox[{"\<\"ServerAuthentication\"\>", "\[Rule]", "Automatic"}], 
+           ",", 
+           RowBox[{"\<\"VerifyPeer\"\>", "\[Rule]", "False"}], ",", 
+           RowBox[{"\<\"Timeout\"\>", "\[Rule]", "Automatic"}], ",", 
+           RowBox[{"\<\"RequestMethod\"\>", "\[Rule]", "\<\"GET\"\>"}], ",", 
+           RowBox[{"\<\"RequestParameters\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"RequestHeaderFields\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"Username\"\>", "\[Rule]", "None"}], ",", 
+           RowBox[{"\<\"Password\"\>", "\[Rule]", "None"}]}], "}"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[Utilities`URLTools`FetchURL],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.562681851736328*^9},
+ CellTags->"Info3562692651-7776880"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "UncompressGZIPFile"}]], "Input",
+ CellChangeTimes->{{3.562682015517578*^9, 3.562682022361328*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox["\<\"UncompressGZIPFile[ old, new] unformats the gzip file old into \
+new.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5626820229091797`*^9},
+ CellTags->"Info3562692822-7776880"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"UncompressGZIPFile", "[", 
+          RowBox[{"Utilities`URLTools`Private`file_", ",", 
+           RowBox[{"Utilities`URLTools`Private`outFile_", ":", "Null"}]}], 
+          "]"}], ":=", 
+         RowBox[{"Catch", "[", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"Utilities`URLTools`Private`outFile", "===", "Null"}], 
+             ",", 
+             RowBox[{
+             "Utilities`URLTools`Private`iUncompressGZIPFile", "[", 
+              "Utilities`URLTools`Private`file", "]"}], ",", 
+             RowBox[{"Utilities`URLTools`Private`iUncompressGZIPFile", "[", 
+              RowBox[{
+              "Utilities`URLTools`Private`file", ",", 
+               "Utilities`URLTools`Private`outFile"}], "]"}]}], "]"}], ",", 
+           "_Utilities`URLTools`Private`URLToolsException", ",", 
+           "Utilities`URLTools`Private`processException"}], "]"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[Utilities`URLTools`UncompressGZIPFile],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5626820229365234`*^9},
+ CellTags->"Info3562692822-7776880"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"setGZFlag", "[", "args"}]], "Input",
+ CellChangeTimes->{{3.5626821434785156`*^9, 3.5626821472851562`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"url", "=", 
+  RowBox[{"JavaNew", "[", 
+   RowBox[{
+   "\"\<java.net.URL\>\"", ",", 
+    "\"\<https://gist.github.com/gists/1869086/download\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626826236757812`*^9, 3.562682654930664*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{"java", ".", "net", ".", "URL"}], "]"}], "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject15772931950903298]], "Output",
+ CellChangeTimes->{3.5626826557226562`*^9, 3.5626877932851562`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconn", " ", "=", 
+  RowBox[{"url", "@", 
+   RowBox[{"openConnection", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5626826684697266`*^9, 3.562682690080078*^9}, {
+  3.562682763001953*^9, 3.562682768892578*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{
+    "sun", ".", "net", ".", "www", ".", "protocol", ".", "https", ".", 
+     "HttpsURLConnectionImpl"}], "]"}], "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject35612745281830913]], "Output",
+ CellChangeTimes->{3.5626826907685547`*^9, 3.562682769998047*^9, 
+  3.5626878015507812`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"uconn", "@", 
+  RowBox[{"connect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626840352558594`*^9, 3.5626840386484375`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getAttachementType", "[", "uconn", "]"}]], "Input",
+ CellChangeTimes->{{3.5626878214365234`*^9, 3.562687821821289*^9}}],
+
+Cell[BoxData["\<\"gz\"\>"], "Output",
+ CellChangeTimes->{3.562687823055664*^9, 3.562688264767578*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"uconn", "@", 
+  RowBox[{"disconnect", "[", "]"}]}]], "Input"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.562687810321289*^9}],
+
+Cell[BoxData["5"], "Input",
+ CellChangeTimes->{3.562684113036133*^9}],
+
+Cell[BoxData["\"\<Status\>\""], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconn", "@", 
+  RowBox[{"getHeaderFieldKey", "[", "9", "]"}]}]], "Input",
+ CellChangeTimes->{{3.562684071095703*^9, 3.562684136966797*^9}}],
+
+Cell[BoxData["\<\"Content-Disposition\"\>"], "Output",
+ CellChangeTimes->{{3.562684072140625*^9, 3.5626841372910156`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconn", "@", 
+  RowBox[{
+  "getHeaderField", "[", "\"\<Content-Disposition\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{3.5626842519609375`*^9}],
+
+Cell[BoxData["\<\"attachment; \
+filename=\\\"gist1869086-770bffdbd6b12815518c180c13920fa13acec2e6.tar.gz\\\"\"\
+\>"], "Output",
+ CellChangeTimes->{3.562684252951172*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"uconn", "@", 
+  RowBox[{"disconnect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626842747578125`*^9, 3.562684282810547*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconn", "@", 
+  RowBox[{"getHeaderField", "[", "9", "]"}]}]], "Input",
+ CellChangeTimes->{{3.562684041510742*^9, 3.562684048901367*^9}, {
+  3.562684087928711*^9, 3.562684101631836*^9}, {3.5626841335947266`*^9, 
+  3.5626841411015625`*^9}}],
+
+Cell[BoxData["\<\"attachment; \
+filename=\\\"gist1869086-770bffdbd6b12815518c180c13920fa13acec2e6.tar.gz\\\"\"\
+\>"], "Output",
+ CellChangeTimes->{
+  3.56268405009375*^9, {3.562684088338867*^9, 3.562684101892578*^9}, {
+   3.5626841339345703`*^9, 3.5626841413447266`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.5626877611171875`*^9, 3.5626877613515625`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"urlZip", "=", 
+  RowBox[{"JavaNew", "[", 
+   RowBox[{
+   "\"\<java.net.URL\>\"", ",", 
+    "\"\<https://github.com/lshifr/CodeFormatter/archive/master.zip\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626844225859375`*^9, 3.5626844351210938`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{"java", ".", "net", ".", "URL"}], "]"}], "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject4112698732183554]], "Output",
+ CellChangeTimes->{3.5626844372001953`*^9, 3.5626878938466797`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconnZip", " ", "=", 
+  RowBox[{"urlZip", "@", 
+   RowBox[{"openConnection", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.562684449208008*^9, 3.5626844536464844`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{
+    "sun", ".", "net", ".", "www", ".", "protocol", ".", "https", ".", 
+     "HttpsURLConnectionImpl"}], "]"}], "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject2903424886636545]], "Output",
+ CellChangeTimes->{3.5626844561689453`*^9, 3.562685180993164*^9, 
+  3.5626857428095703`*^9, 3.5626876255859375`*^9, 3.5626878952460938`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"setFollowRedirects", "[", "True", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626857477578125`*^9, 3.56268577815625*^9}}],
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"connect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626844685058594`*^9, 3.5626844691728516`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{
+  "getHeaderField", "[", "\"\<Content-Disposition\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{3.5626879236552734`*^9}],
+
+Cell[BoxData["\<\"attachment; filename=CodeFormatter-master.zip\"\>"], \
+"Output",
+ CellChangeTimes->{3.5626879257695312`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getAttachementType", "[", "uconnZip", "]"}]], "Input",
+ CellChangeTimes->{{3.5626876304570312`*^9, 3.562687636426758*^9}}],
+
+Cell[BoxData["\<\"zip\"\>"], "Output",
+ CellChangeTimes->{
+  3.562687707694336*^9, {3.562688248770508*^9, 3.562688255104492*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"disconnect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626877269121094`*^9, 3.5626877272998047`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileExtension", "[", "\"\<\\\"a.zip\\\"\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.5626879501171875`*^9, 3.5626879741376953`*^9}}],
+
+Cell[BoxData["\<\"zip\\\"\"\>"], "Output",
+ CellChangeTimes->{3.562687974524414*^9}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5626877404521484`*^9}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.562687646245117*^9}],
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"getHeaderField", "[", "\"\<Status\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{3.562685202817383*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fields", "=", 
+  RowBox[{"uconnZip", "@", 
+   RowBox[{"getHeaderFields", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5626854241748047`*^9, 3.562685440232422*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{"java", ".", "util", ".", "Collections$UnmodifiableMap"}], "]"}], 
+   "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject24948117291925505]], "Output",
+ CellChangeTimes->{{3.562685433555664*^9, 3.5626854410966797`*^9}, 
+   3.5626858131865234`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"iter", "=", 
+  RowBox[{"fields", "@", 
+   RowBox[{
+    RowBox[{"keySet", "[", "]"}], "@", 
+    RowBox[{"iterator", "[", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.5626855480058594`*^9, 3.56268558875*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{
+    "java", ".", "util", ".", "Collections$UnmodifiableCollection$1"}], "]"}],
+    "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject28306390757933057]], "Output",
+ CellChangeTimes->{{3.5626855540810547`*^9, 3.5626855895371094`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f", " ", "=", " ", 
+  RowBox[{"iter", "@", 
+   RowBox[{"next", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.562685590444336*^9, 3.5626855992382812`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Java", "::", "excptn"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"A Java exception occurred: \
+\[NoBreak]\\!\\(\\\"java.util.NoSuchElementException\\\\n\\\\tat \
+java.util.HashMap$HashIterator.nextEntry(HashMap.java:796)\\\\n\\\\tat \
+java.util.HashMap$KeyIterator.next(HashMap.java:828)\\\\n\\\\tat \
+java.util.Collections$UnmodifiableCollection$1.next(Collections.java:1010)\\\"\
+\\)\[NoBreak].\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.5626856166728516`*^9}],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{{3.5626856069277344`*^9, 3.5626856166748047`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "javaIterate", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"javaIterate", ",", "HoldAll"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"javaIterate", "[", 
+     RowBox[{"var_Symbol", ",", "code_"}], "]"}], "[", 
+    RowBox[{"iteratorInstance_", "?", "JavaObjectQ"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{"iteratorInstance", "@", 
+      RowBox[{"hasNext", "[", "]"}]}], ",", 
+     RowBox[{"With", "@@", 
+      RowBox[{"Hold", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"var", "=", 
+          RowBox[{"iteratorInstance", "@", 
+           RowBox[{"next", "[", "]"}]}]}], "}"}], ",", "code"}], "]"}]}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"javaIterate", "[", "___", "]"}], "[", "___", "]"}], ":=", 
+    RowBox[{"Throw", "[", 
+     RowBox[{"$Failed", ",", 
+      RowBox[{"error", "[", "javaIterate", "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"ClearAll", "[", 
+   RowBox[{"save", ",", "collect"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"save", "=", "Sow"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"collect", ",", "HoldAll"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"collect", "[", "code_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"#", "===", 
+        RowBox[{"{", "}"}]}], ",", "#", ",", 
+       RowBox[{"First", "@", "#"}]}], "]"}], "&"}], "@", 
+    RowBox[{
+     RowBox[{"Reap", "[", "code", "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}]}]}], ";"}], "\n"}], "Input",
+ CellChangeTimes->{{3.562686116419922*^9, 3.5626861348808594`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "getHTTPHeaderFields", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getHTTPHeaderFields", "[", 
+    RowBox[{"urlConnection_", "?", "JavaObjectQ"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "entry", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"JavaBlock", "[", "\[IndentingNewLine]", 
+      RowBox[{"With", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"iter", "=", " ", 
+          RowBox[{"urlConnection", "@", 
+           RowBox[{
+            RowBox[{"getHeaderFields", "[", "]"}], "@", 
+            RowBox[{
+             RowBox[{"keySet", "[", "]"}], "@", 
+             RowBox[{"iterator", "[", "]"}]}]}]}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"#", "=!=", 
+             RowBox[{"{", "}"}]}], ",", 
+            RowBox[{"Rest", "[", "#", "]"}], ",", "#"}], "]"}], "&"}], "@", 
+         RowBox[{"collect", "@", 
+          RowBox[{
+           RowBox[{"javaIterate", "[", 
+            RowBox[{"entry", ",", 
+             RowBox[{"save", "[", "entry", "]"}]}], "]"}], "[", "iter", 
+           "]"}]}]}]}], "]"}], "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getHTTPHeaderFields", "[", "___", "]"}], ":=", 
+   RowBox[{"Throw", "[", 
+    RowBox[{"$Failed", ",", " ", 
+     RowBox[{"error", "[", "getHTTPHeaderFields", "]"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.562685953256836*^9, 3.562686048239258*^9}, {
+  3.562686145868164*^9, 3.5626862475839844`*^9}, {3.562686369946289*^9, 
+  3.5626863868828125`*^9}, {3.562687071470703*^9, 3.5626871063427734`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "getFields", "]"}]], "Input",
+ CellChangeTimes->{{3.5626871129335938`*^9, 3.5626871166289062`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fields", "=", 
+  RowBox[{"getFields", "[", "uconnZip", "]"}]}]], "Input",
+ CellChangeTimes->{{3.562686271913086*^9, 3.562686281258789*^9}, {
+  3.5626864259433594`*^9, 3.562686428557617*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Date\"\>", ",", "\<\"Content-Length\"\>", 
+   ",", "\<\"Content-Disposition\"\>", ",", "\<\"Content-Type\"\>", 
+   ",", "\<\"Connection\"\>", ",", "\<\"Server\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.562686281635742*^9, {3.5626864099179688`*^9, 3.5626864291240234`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"MemberQ", "[", 
+     RowBox[{"fields", ",", "\"\<Status\>\""}], "]"}], "&&", " ", 
+    RowBox[{"!", 
+     RowBox[{"StringFreeQ", "[", 
+      RowBox[{
+       RowBox[{"conn", "@", 
+        RowBox[{"getHeaderField", "[", "\"\<Status\>\"", "]"}]}], ",", 
+       "\"\<404\>\""}], "]"}]}]}], ",", " ", 
+   RowBox[{"not", " ", "found"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5626864305302734`*^9, 3.5626864417216797`*^9}, {
+  3.5626865135009766`*^9, 3.5626865144091797`*^9}, {3.562686551823242*^9, 
+  3.562686594826172*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"MemberQ", "[", 
+    RowBox[{"fields", ",", " ", "\"\<Content-Disposition\>\""}], "]"}], " ", 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"content", " ", "=", " ", 
+     RowBox[{"uconnZip", "@", 
+      RowBox[{"getHeaderField", "[", "\"\<Content-Disposition\>\"", "]"}]}]}],
+     ";", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringQ", "[", "content", "]"}], " ", "&&", " ", 
+       RowBox[{"!", 
+        RowBox[{"StringFreeQ", "[", 
+         RowBox[{"content", ",", " ", 
+          RowBox[{"\"\<filename=\>\"", "~~", "__"}]}], "]"}]}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"extension", " ", "=", " ", 
+       RowBox[{"FileExtension", "[", 
+        RowBox[{"StringReplace", "[", 
+         RowBox[{"content", ",", " ", 
+          RowBox[{
+           RowBox[{"\"\<filename=\>\"", "~~", "x__", "~~", 
+            RowBox[{"(", 
+             RowBox[{"Whitespace", "|", "\"\<\>\""}], ")"}]}], 
+           "\[RuleDelayed]", "x"}]}], "]"}], "]"}]}]}], "]"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5626866003027344`*^9, 3.5626866039697266`*^9}, {
+  3.5626866471083984`*^9, 3.5626867812929688`*^9}, {3.562686839084961*^9, 
+  3.5626869189785156`*^9}}],
+
+Cell[BoxData["\<\"zip\"\>"], "Output",
+ CellChangeTimes->{3.562686442076172*^9, 3.562686919633789*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "destringify", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"destringify", "[", 
+    RowBox[{"s_String", "/;", 
+     RowBox[{"StringMatchQ", "[", 
+      RowBox[{"s", ",", 
+       RowBox[{"\"\<\\\"\>\"", "~~", "__", "~~", "\"\<\\\"\>\""}]}], "]"}]}], 
+    "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"destringify", "[", 
+    RowBox[{"StringReplace", "[", 
+     RowBox[{"s", ",", 
+      RowBox[{
+       RowBox[{"LongestMatch", "[", 
+        RowBox[{"\"\<\\\"\>\"", "~~", "x__", "~~", "\"\<\\\"\>\""}], "]"}], 
+       "\[RuleDelayed]", "x"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"destringify", "[", "s_String", "]"}], ":=", "s"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{" "}]}], "Input",
+ CellChangeTimes->{{3.5626879967490234`*^9, 3.5626881589179688`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"destringify", "[", "\"\<\\\"\\\"abc\\\"\\\"\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.5626881702382812`*^9, 3.5626881995410156`*^9}}],
+
+Cell[BoxData["\<\"abc\"\>"], "Output",
+ CellChangeTimes->{{3.5626881830341797`*^9, 3.5626882006435547`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "extension", "]"}]], "Input",
+ CellChangeTimes->{{3.562688380317383*^9, 3.5626883856123047`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"urlZip", "=", 
+  RowBox[{"JavaNew", "[", 
+   RowBox[{
+   "\"\<java.net.URL\>\"", ",", 
+    "\"\<https://github.com/lshifr/CodeFormatter/archive/master.zip\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626844225859375`*^9, 3.5626844351210938`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{"java", ".", "net", ".", "URL"}], "]"}], "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject4112698732183554]], "Output",
+ CellChangeTimes->{3.5626844372001953`*^9, 3.5626878938466797`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconnZip", " ", "=", 
+  RowBox[{"urlZip", "@", 
+   RowBox[{"openConnection", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.562684449208008*^9, 3.5626844536464844`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{
+    "sun", ".", "net", ".", "www", ".", "protocol", ".", "https", ".", 
+     "HttpsURLConnectionImpl"}], "]"}], "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject2903424886636545]], "Output",
+ CellChangeTimes->{3.5626844561689453`*^9, 3.562685180993164*^9, 
+  3.5626857428095703`*^9, 3.5626876255859375`*^9, 3.5626878952460938`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"setFollowRedirects", "[", "True", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626857477578125`*^9, 3.56268577815625*^9}}],
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"connect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626844685058594`*^9, 3.5626844691728516`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{
+  "getHeaderField", "[", "\"\<Content-Disposition\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{3.5626879236552734`*^9}],
+
+Cell[BoxData["\<\"attachment; filename=CodeFormatter-master.zip\"\>"], \
+"Output",
+ CellChangeTimes->{3.5626879257695312`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getAttachementType", "[", "uconnZip", "]"}]], "Input",
+ CellChangeTimes->{{3.5626876304570312`*^9, 3.562687636426758*^9}}],
+
+Cell[BoxData["\<\"zip\"\>"], "Output",
+ CellChangeTimes->{
+  3.562687707694336*^9, {3.562688248770508*^9, 3.562688255104492*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"disconnect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626877269121094`*^9, 3.5626877272998047`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "getAttachementFileName", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"getAttachementFileName", "[", 
+     RowBox[{"URL", "[", "urlString_String", "]"}], "]"}], ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"JavaBlock", "[", "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"url", ",", "uconn", ",", "result"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"url", "=", " ", 
+         RowBox[{"JavaNew", "[", 
+          RowBox[{"\"\<java.net.URL\>\"", ",", "urlString"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"uconn", " ", "=", 
+         RowBox[{"url", "@", 
+          RowBox[{"openConnection", "[", "]"}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"uconn", " ", "@", 
+         RowBox[{"setFollowRedirects", "[", "True", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"CleanUp", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"uconn", "@", 
+            RowBox[{"connect", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"getAttachementFileName", "[", "uconn", "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"uconn", "@", 
+           RowBox[{"disconnect", "[", "]"}]}]}], "\[IndentingNewLine]", 
+         "]"}]}]}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getAttachementFileName", "[", 
+    RowBox[{"urlConnection_", "?", "JavaObjectQ"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"headerFields", ",", " ", "content", ",", "filename"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"headerFields", "=", 
+       RowBox[{"getHTTPHeaderFields", "[", "urlConnection", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"MemberQ", "[", 
+          RowBox[{"headerFields", ",", "\"\<Status\>\""}], "]"}], "&&", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"!", 
+          RowBox[{"StringFreeQ", "[", 
+           RowBox[{
+            RowBox[{"urlConnection", "@", 
+             RowBox[{"getHeaderField", "[", "\"\<Status\>\"", "]"}]}], ",", 
+            "\"\<404\>\""}], "]"}]}]}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{"Throw", "[", 
+         RowBox[{"$Failed", ",", " ", 
+          RowBox[{"error", "[", 
+           RowBox[{"getAttachementFileName", ",", "\"\<404\>\""}], "]"}]}], 
+         "]"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"headerFields", ",", " ", "\"\<Content-Disposition\>\""}], 
+         "]"}], " ", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"content", " ", "=", " ", 
+          RowBox[{"urlConnection", "@", 
+           RowBox[{
+           "getHeaderField", "[", "\"\<Content-Disposition\>\"", "]"}]}]}], 
+         ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"StringQ", "[", "content", "]"}], " ", "&&", " ", 
+            RowBox[{"!", 
+             RowBox[{"StringFreeQ", "[", 
+              RowBox[{"content", ",", " ", 
+               RowBox[{"\"\<filename=\>\"", "~~", "__"}]}], "]"}]}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"filename", " ", "=", " ", "\[IndentingNewLine]", 
+            RowBox[{"StringReplace", "[", "\[IndentingNewLine]", 
+             RowBox[{"content", ",", " ", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"\"\<filename=\>\"", "~~", "x__", "~~", 
+                RowBox[{"(", 
+                 RowBox[{"Whitespace", "|", "\"\<\>\""}], ")"}]}], 
+               "\[RuleDelayed]", 
+               RowBox[{"destringify", "[", "x", "]"}]}]}], 
+             "\[IndentingNewLine]", "]"}]}]}], "]"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"!", 
+         RowBox[{"ValueQ", "[", "filename", "]"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Throw", "[", 
+         RowBox[{"$Failed", ",", 
+          RowBox[{"error", "[", 
+           RowBox[{"getAttachementFileName", ",", "\"\<unable_to_guess\>\""}],
+            "]"}]}], "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", "filename"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getAttachementFileName", "[", "___", "]"}], ":=", 
+   RowBox[{"Throw", "[", 
+    RowBox[{"$Failed", ",", 
+     RowBox[{"error", "[", "getAttachementFileName", "]"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.562686951649414*^9, 3.5626870693466797`*^9}, 
+   3.5626871268691406`*^9, {3.5626871765410156`*^9, 3.5626872353789062`*^9}, {
+   3.5626872683066406`*^9, 3.5626873870878906`*^9}, {3.5626875828583984`*^9, 
+   3.5626875973876953`*^9}, {3.5626876547939453`*^9, 3.562687688814453*^9}, {
+   3.562688218171875*^9, 3.562688220638672*^9}, {3.562688323859375*^9, 
+   3.5626884352626953`*^9}, {3.562688491821289*^9, 3.562688517602539*^9}, {
+   3.5626887024228516`*^9, 3.5626887049296875`*^9}, {3.562688759348633*^9, 
+   3.562688892888672*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.562687612267578*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MemberQ", "[", 
+  RowBox[{"fields", ",", "\"\<Content-Disposition\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.562686448604492*^9, 3.5626864586484375`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.5626864591875*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{"MemberQ", "[", 
+   RowBox[{"fields", ",", "\"\<Status\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626864701865234`*^9, 3.562686496071289*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.562686420852539*^9, 3.562686422635742*^9}}],
+
+Cell[BoxData["f"], "Input",
+ CellChangeTimes->{3.5626856026845703`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"getHeaderFieldKey", "[", "6", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626845519414062`*^9, 3.562684587977539*^9}}],
+
+Cell[BoxData["\<\"Content-Disposition\"\>"], "Output",
+ CellChangeTimes->{{3.5626845555117188`*^9, 3.5626845882597656`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{
+  "getHeaderField", "[", "\"\<Content-Disposition\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626844891220703`*^9, 3.5626845297333984`*^9}, {
+   3.5626845634003906`*^9, 3.562684565279297*^9}, 3.562684598038086*^9}],
+
+Cell[BoxData["\<\"attachment; filename=CodeFormatter-master.zip\"\>"], \
+"Output",
+ CellChangeTimes->{3.562684530060547*^9, 3.562684598875*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"uconnZip", "@", 
+  RowBox[{"disconnect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.562684676758789*^9, 3.5626846791708984`*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.562684691008789*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"urlBad", "=", 
+  RowBox[{"JavaNew", "[", 
+   RowBox[{
+   "\"\<java.net.URL\>\"", ",", 
+    "\"\<https://github.com/lshifr/CodeFormatter/archive/mast\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626846966035156`*^9, 3.562684702057617*^9}, {
+  3.5626847557314453`*^9, 3.562684756432617*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{"java", ".", "net", ".", "URL"}], "]"}], "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject32715312780541953]], "Output",
+ CellChangeTimes->{3.5626847024970703`*^9, 3.5626847587128906`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"conn", "=", 
+  RowBox[{"urlBad", "@", 
+   RowBox[{"openConnection", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.562684719263672*^9, 3.562684730807617*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\[LeftGuillemet]", 
+   RowBox[{"JavaObject", "[", 
+    RowBox[{
+    "sun", ".", "net", ".", "www", ".", "protocol", ".", "https", ".", 
+     "HttpsURLConnectionImpl"}], "]"}], "\[RightGuillemet]"}],
+  JLink`Objects`vm1`JavaObject11994566995476481]], "Output",
+ CellChangeTimes->{{3.5626847199248047`*^9, 3.562684761176758*^9}, 
+   3.5626863069501953`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"conn", "@", 
+  RowBox[{"connect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626847339160156`*^9, 3.562684737288086*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getFields", "[", "conn", "]"}]], "Input",
+ CellChangeTimes->{{3.562686321428711*^9, 3.562686322588867*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Status\"\>", ",", "\<\"Date\"\>", 
+   ",", "\<\"Content-Length\"\>", ",", "\<\"Set-Cookie\"\>", 
+   ",", "\<\"Content-Type\"\>", ",", "\<\"Connection\"\>", 
+   ",", "\<\"Server\"\>", ",", "\<\"Cache-Control\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5626863236523438`*^9, 3.562686349198242*^9}, 
+   3.5626866358623047`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"conn", "@", 
+  RowBox[{"disconnect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.562686336838867*^9, 3.5626863413710938`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"conn", "@", 
+  RowBox[{"getHeaderFieldKey", "[", "5", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626847727929688`*^9, 3.562684784290039*^9}, {
+  3.5626851510722656`*^9, 3.5626851511748047`*^9}}],
+
+Cell[BoxData["\<\"Status\"\>"], "Output",
+ CellChangeTimes->{3.5626847869746094`*^9, 3.5626851514589844`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"conn", "@", 
+  RowBox[{"getHeaderField", "[", "5", "]"}]}]], "Input",
+ CellChangeTimes->{{3.562684815348633*^9, 3.5626848338691406`*^9}}],
+
+Cell[BoxData["\<\"404 Not Found\"\>"], "Output",
+ CellChangeTimes->{{3.5626848188984375`*^9, 3.562684834169922*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringFreeQ", "[", 
+  RowBox[{"\"\<404 Not Found\>\"", ",", "\"\<404\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.562686534482422*^9, 3.5626865431240234`*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.562686543442383*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"conn", "@", 
+  RowBox[{"getHeaderField", "[", "\"\<Status\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626851591796875`*^9, 3.562685161911133*^9}}],
+
+Cell[BoxData["\<\"404 Not Found\"\>"], "Output",
+ CellChangeTimes->{3.562685162524414*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"conn", "@", 
+  RowBox[{"disconnect", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626847446845703`*^9, 3.562684748796875*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5626846394472656`*^9, 3.562684670026367*^9}, {
+   3.562684872241211*^9, 3.562684894265625*^9}, {3.5626850042402344`*^9, 
+   3.5626850525009766`*^9}, 3.5626887347148438`*^9}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5626843632382812`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Earlier drafts", "Subsubsection",
+ CellChangeTimes->{{3.5626902691210938`*^9, 3.562690273510742*^9}}],
+
+Cell[BoxData[
+ RowBox[{"projectUninstall", "[", "\"\<FunctionVersionInfo\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5626798307158203`*^9, 3.5626798486748047`*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.562613851991211*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Assume", " ", 
+    RowBox[{"one", " ", ".", "tar"}], " ", "file", " ", "in", " ", "the", " ",
+     "archive"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ClearAll", "[", "unGZipProject", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"unGZipProject", "[", 
+      RowBox[{"gzipPath_", ",", "tempDir_"}], "]"}], ":=", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"ungzipped", ",", " ", "files"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"shortCircuitFail", "[", "\[IndentingNewLine]", 
+        RowBox[{"unGZipProject", ",", "\[IndentingNewLine]", 
+         RowBox[{"ungzipped", "=", " ", 
+          RowBox[{"extractArchive", "[", 
+           RowBox[{"gzipPath", ",", "tempDir", ",", "\"\<GZIP\>\""}], "]"}]}],
+          ",", "\[IndentingNewLine]", 
+         RowBox[{"check", "[", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"files", " ", "=", " ", 
+             RowBox[{"FileNames", "[", 
+              RowBox[{"\"\<*.tar\>\"", ",", 
+               RowBox[{"{", "ungzipped", "}"}]}], "]"}]}], "]"}], "\[Equal]", 
+           "1"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"First", "@", "files"}]}], "\[IndentingNewLine]", "]"}]}], 
+      "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.562670351455078*^9, 3.5626705732685547`*^9}, {
+  3.5626739569990234`*^9, 3.5626739622109375`*^9}, {3.5626740918378906`*^9, 
+  3.5626740930185547`*^9}, {3.5626747070253906`*^9, 3.5626747263964844`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Assume", " ", "one", " ", "directory", " ", "in", " ", 
+     RowBox[{"the", " ", ".", "tar"}], " ", 
+     RowBox[{"archive", ".", " ", "There"}], " ", "can", " ", "also", " ", 
+     "be", " ", "files"}], ",", " ", 
+    RowBox[{"they", " ", "will", " ", "be", " ", "ignored"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ClearAll", "[", "unTarProject", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"unTarProject", "[", 
+      RowBox[{"tarPath_", ",", "tempDir_"}], "]"}], ":=", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"untarred", ",", " ", "dirs"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"shortCircuitFail", "[", "\[IndentingNewLine]", 
+        RowBox[{"unTarProject", ",", "\[IndentingNewLine]", 
+         RowBox[{"untarred", "=", " ", 
+          RowBox[{"extractArchive", "[", 
+           RowBox[{"tarPath", ",", "tempDir", ",", "\"\<TAR\>\""}], "]"}]}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"check", "[", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"dirs", "=", " ", 
+             RowBox[{"Select", "[", 
+              RowBox[{
+               RowBox[{"FileNames", "[", 
+                RowBox[{"\"\<*\>\"", ",", 
+                 RowBox[{"{", "untarred", "}"}]}], "]"}], ",", "DirectoryQ"}],
+               "]"}]}], "]"}], "\[Equal]", "1"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"First", "@", "dirs"}]}], "\[IndentingNewLine]", "]"}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.562674520432617*^9, 3.5626746034609375`*^9}, {
+  3.562674648390625*^9, 3.562674690698242*^9}, {3.562674729051758*^9, 
+  3.5626747674160156`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<Utilities`URLTools`\>\"", "]"}], ";"}]], "Input"],
 
 Cell[CellGroupData[{
 
@@ -1120,7 +3398,9 @@ Cell[BoxData[
 
 Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\Documents\\\\gist4110264.tar.gz\"\>\
 "], "Output",
- CellChangeTimes->{3.5626041301484375`*^9}]
+ CellChangeTimes->{3.5626041301484375`*^9, 3.56267397334375*^9, 
+  3.5626742202382812`*^9, 3.5626749957910156`*^9, 3.5626750446992188`*^9, 
+  3.562675313446289*^9, 3.5626753690351562`*^9, 3.562675653426758*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1134,8 +3414,161 @@ Cell[BoxData[
  CellChangeTimes->{{3.562604207501953*^9, 3.562604218428711*^9}}],
 
 Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
-\\ApplicationData\\\\LoadedProjects\\\\temp90716\"\>"], "Output",
- CellChangeTimes->{3.562604219716797*^9}]
+\\ApplicationData\\\\LoadedProjects\\\\temp39860\"\>"], "Output",
+ CellChangeTimes->{3.562604219716797*^9, 3.5626739753671875`*^9, 
+  3.5626742210283203`*^9, 3.5626750695*^9, 3.5626751262460938`*^9, 
+  3.5626753143867188`*^9, 3.5626753697939453`*^9, 3.5626756542529297`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{"DirectoryQ", "[", "tempTarDir", "]"}], ",", 
+   RowBox[{"DeleteDirectory", "[", 
+    RowBox[{"tempTarDir", ",", 
+     RowBox[{"DeleteContents", "\[Rule]", "True"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5626744587646484`*^9, 3.5626744926240234`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tarFilePath", " ", "=", " ", 
+  RowBox[{"unGZipProject", "[", 
+   RowBox[{"gistpath", ",", "tempTarDir"}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.5626740104765625`*^9, {3.5626740637265625`*^9, 3.5626740792851562`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\ApplicationData\\\\LoadedProjects\\\\temp39860\\\\gist4110264.tar\"\>"], \
+"Output",
+ CellChangeTimes->{{3.562674079888672*^9, 3.562674095432617*^9}, {
+   3.562674224881836*^9, 3.562674228182617*^9}, 3.562674399084961*^9, 
+   3.5626744949716797`*^9, {3.562675697395508*^9, 3.562675710463867*^9}, 
+   3.562676676223633*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"destDir", " ", "=", " ", 
+  RowBox[{"makeTemporaryDirectoryName", "[", 
+   RowBox[{
+   "ApplicationDataUserDirectory", "[", "\"\<LoadedProjects\>\"", "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626747890585938`*^9, 3.5626747957070312`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\ApplicationData\\\\LoadedProjects\\\\temp77182\"\>"], "Output",
+ CellChangeTimes->{3.562674796725586*^9, 3.5626757126679688`*^9, 
+  3.5626766788427734`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"unTarProject", "[", 
+  RowBox[{"tarFilePath", ",", "destDir"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5626747997578125`*^9, 3.5626748128007812`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\ApplicationData\\\\LoadedProjects\\\\temp77182\\\\gist4110264-\
+18f0d2730e7a839254d149752ea22073a71ec0c2\"\>"], "Output",
+ CellChangeTimes->{3.5626748136757812`*^9, 3.5626748665273438`*^9, 
+  3.5626757138632812`*^9, 3.562676679694336*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.562675822586914*^9, 3.562675826830078*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "extractTarGzippedProject", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"extractTarGzippedProject", "[", 
+    RowBox[{
+     RowBox[{"path_String", "?", "FileExistsQ"}], ",", "tempBaseDir_String"}],
+     "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "tempTarDir", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tempTarDir", " ", "=", " ", 
+       RowBox[{"makeTemporaryDirectoryName", "[", "tempBaseDir", "]"}]}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"withTemporaryDirectory", "[", "\[IndentingNewLine]", 
+       RowBox[{"tempTarDir", ",", "\[IndentingNewLine]", 
+        RowBox[{"unTarProject", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"unGZipProject", "[", 
+           RowBox[{"path", ",", "tempTarDir"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"makeTemporaryDirectoryName", "[", "tempBaseDir", "]"}]}], 
+         "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"CreateIfDoesNotExist", " ", "\[Rule]", " ", "False"}]}], 
+       "\[IndentingNewLine]", "]"}]}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5626757421601562`*^9, 3.5626757603515625`*^9}, {
+   3.562675796265625*^9, 3.5626758333759766`*^9}, {3.5626758653125*^9, 
+   3.5626759172929688`*^9}, {3.5626759858066406`*^9, 
+   3.5626759910185547`*^9}, {3.5626761648789062`*^9, 
+   3.5626761719785156`*^9}, {3.5626762031347656`*^9, 
+   3.5626762318916016`*^9}, {3.562676357209961*^9, 3.5626763714697266`*^9}, {
+   3.5626764085703125`*^9, 3.5626765149726562`*^9}, {3.56267654984375*^9, 
+   3.562676609135742*^9}, 3.5626767694589844`*^9, {3.562677547626953*^9, 
+   3.562677548095703*^9}, {3.5626777296308594`*^9, 3.56267773765625*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"extractTarGzippedProject", "[", 
+  RowBox[{"gistpath", ",", " ", 
+   RowBox[{
+   "ApplicationDataUserDirectory", "[", "\"\<LoadedProjects\>\"", "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5626766110878906`*^9, 3.562676638100586*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\ApplicationData\\\\LoadedProjects\\\\temp4413\\\\gist4110264-\
+18f0d2730e7a839254d149752ea22073a71ec0c2\"\>"], "Output",
+ CellChangeTimes->{{3.5626766256748047`*^9, 3.562676639291992*^9}, 
+   3.562677742830078*^9, 3.56267780003125*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.5626739930654297`*^9, 3.562673993272461*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"gistpath", "=", 
+  RowBox[{"FetchURL", "[", 
+   RowBox[{
+   "\"\<https://gist.github.com/gists/4110264/download\>\"", ",", 
+    "\"\<gist4110264.tar.gz\>\"", ",", 
+    RowBox[{"FileFilters", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5626040901845703`*^9, 3.5626041229941406`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\Documents\\\\gist4110264.tar.gz\"\>\
+"], "Output",
+ CellChangeTimes->{3.5626041301484375`*^9, 3.56267397334375*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tempTarDir", "=", " ", 
+  RowBox[{"makeTemporaryDirectoryName", "[", 
+   RowBox[{
+   "ApplicationDataUserDirectory", "[", "\"\<LoadedProjects\>\"", "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.562604207501953*^9, 3.562604218428711*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
+\\ApplicationData\\\\LoadedProjects\\\\temp19820\"\>"], "Output",
+ CellChangeTimes->{3.562604219716797*^9, 3.5626739753671875`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1230,7 +3663,7 @@ Cell[BoxData["\<\"C:\\\\Users\\\\Archie\\\\AppData\\\\Roaming\\\\Mathematica\\\
  CellChangeTimes->{3.562605120701172*^9}]
 }, Open  ]]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -1238,15 +3671,30 @@ Cell["TODO", "Subsection",
  CellChangeTimes->{{3.562609236838867*^9, 3.5626092375703125`*^9}}],
 
 Cell["\<\
-Much better diagnostics / error-handling\
+Debug problems with the zips  (NonGridInterpolation project) - DONE\
 \>", "Subsubsection",
+ CellChangeTimes->{{3.562614141911133*^9, 3.562614155647461*^9}, {
+  3.5626142304804688`*^9, 3.562614233479492*^9}, {3.562670284216797*^9, 
+  3.5626702850195312`*^9}}],
+
+Cell["tar.gz projects  - DONE", "Subsubsection",
+ CellChangeTimes->{{3.5626092609414062`*^9, 3.5626092745966797`*^9}, {
+  3.5626800231845703`*^9, 3.562680025560547*^9}}],
+
+Cell["\<\
+projects from the web - DONE, BUT ERROR-HANDLING SUCKS SO FAR\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.562609277595703*^9, 3.5626092810146484`*^9}, {
+  3.5626903735195312`*^9, 3.562690400397461*^9}}],
+
+Cell["\<\
+Add support for single-package projects with no additional files (although \
+such projects should probably be discouraged)\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.562614275526367*^9, 3.5626143121757812`*^9}}],
+
+Cell["Much better diagnostics / error-handling", "Subsubsection",
  CellChangeTimes->{{3.5626092432060547`*^9, 3.5626092572646484`*^9}}],
-
-Cell["tar.gz projects", "Subsubsection",
- CellChangeTimes->{{3.5626092609414062`*^9, 3.5626092745966797`*^9}}],
-
-Cell["projects from the web", "Subsubsection",
- CellChangeTimes->{{3.562609277595703*^9, 3.5626092810146484`*^9}}],
 
 Cell["\<\
 Fix the logging, start logging the problems on both M and Java side\
@@ -1257,13 +3705,48 @@ Fix the logging, start logging the problems on both M and Java side\
 Cell["Test on gists / repos", "Subsubsection",
  CellChangeTimes->{{3.5626094754804688`*^9, 3.562609482751953*^9}}],
 
-Cell["Make a package", "Subsubsection",
- CellChangeTimes->{{3.562609488817383*^9, 3.5626094910722656`*^9}}]
+Cell["Make a package,  use normal mechanism for .jar location etc.", \
+"Subsubsection",
+ CellChangeTimes->{{3.562609488817383*^9, 3.5626094910722656`*^9}, {
+  3.562613330977539*^9, 3.5626133484941406`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Update the build script to build the final layout. Store it in the .zip \
+archive inside the project, so that it is downloadable. Factor out build \
+properties into a separate .properties file.\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.5626134356933594`*^9, 3.5626135158466797`*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5626710354804688`*^9}]
+}, Open  ]],
+
+Cell["Backups when uninstalling, and related functionality", "Subsubsection",
+ CellChangeTimes->{{3.5626132931484375`*^9, 3.562613325713867*^9}}],
+
+Cell["Write documentation", "Subsubsection",
+ CellChangeTimes->{{3.5626133848427734`*^9, 3.5626133891210938`*^9}}],
+
+Cell["\<\
+Add the update functionality, based on versioning (for projects which have \
+the project.m file) or time of last changes for simpler projects.\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.562614584213867*^9, 3.562614657133789*^9}}],
+
+Cell["\<\
+Add tests for newer versions of the same installer, and updating via \
+installing itself (its newer version).\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.562614542435547*^9, 3.5626145773964844`*^9}, {
+  3.5626146647841797`*^9, 3.5626146824853516`*^9}}]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Drafts", "Subsection",
+Cell["Drafts", "Section",
  CellChangeTimes->{{3.562520913370117*^9, 3.562520913970703*^9}}],
 
 Cell[BoxData[{
@@ -2314,277 +4797,601 @@ StyleDefinitions->"Default.nb"
 (*CellTagsOutline
 CellTagsIndex->{
  "Info3562528504-5851878"->{
-  Cell[82651, 2226, 143, 2, 60, "Print",
+  Cell[174650, 4709, 143, 2, 202, "Print",
    CellTags->"Info3562528504-5851878"],
-  Cell[82797, 2230, 2490, 62, 151, "Print",
-   CellTags->"Info3562528504-5851878"]}
+  Cell[174796, 4713, 2490, 62, 508, "Print",
+   CellTags->"Info3562528504-5851878"]},
+ "Info3562692651-7776880"->{
+  Cell[88482, 2236, 377, 6, 63, "Print",
+   CellTags->"Info3562692651-7776880"],
+  Cell[88862, 2244, 2950, 72, 156, "Print",
+   CellTags->"Info3562692651-7776880"]},
+ "Info3562692822-7776880"->{
+  Cell[92014, 2328, 217, 4, 63, "Print",
+   CellTags->"Info3562692822-7776880"],
+  Cell[92234, 2334, 1675, 40, 108, "Print",
+   CellTags->"Info3562692822-7776880"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3562528504-5851878", 85930, 2315}
+ {"Info3562528504-5851878", 177929, 4798},
+ {"Info3562692651-7776880", 178127, 4803},
+ {"Info3562692822-7776880", 178322, 4808}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 105, 1, 54, "Subsection"],
+Cell[579, 22, 102, 1, 105, "Section"],
 Cell[CellGroupData[{
-Cell[709, 27, 97, 1, 38, "Subsubsection"],
-Cell[809, 30, 286, 6, 71, "Input"],
-Cell[1098, 38, 585, 12, 152, "Input"],
-Cell[1686, 52, 1637, 42, 233, "Input"],
-Cell[3326, 96, 2478, 55, 422, "Input"],
-Cell[5807, 153, 383, 11, 71, "Input"],
-Cell[6193, 166, 2381, 56, 557, "Input"],
-Cell[8577, 224, 3359, 75, 692, "Input"],
-Cell[11939, 301, 747, 19, 98, "Input"],
-Cell[12689, 322, 500, 14, 98, "Input"],
-Cell[13192, 338, 234, 6, 43, "Input"],
-Cell[13429, 346, 3120, 74, 584, "Input"],
-Cell[16552, 422, 1089, 29, 179, "Input"],
-Cell[17644, 453, 678, 18, 98, "Input"],
-Cell[18325, 473, 1328, 37, 233, "Input"],
-Cell[19656, 512, 397, 9, 71, "Input"],
-Cell[20056, 523, 720, 19, 179, "Input"],
-Cell[20779, 544, 927, 22, 233, "Input"],
-Cell[21709, 568, 548, 15, 98, "Input"],
-Cell[22260, 585, 420, 11, 98, "Input"],
-Cell[22683, 598, 3102, 65, 422, "Input"],
-Cell[25788, 665, 2205, 43, 260, "Input"],
-Cell[27996, 710, 1329, 34, 206, "Input"],
-Cell[29328, 746, 1483, 37, 260, "Input"],
-Cell[30814, 785, 2337, 53, 476, "Input"],
-Cell[33154, 840, 1905, 50, 341, "Input"],
-Cell[35062, 892, 502, 14, 98, "Input"],
-Cell[35567, 908, 5677, 110, 773, "Input"]
+Cell[706, 27, 94, 1, 54, "Subsection"],
+Cell[803, 30, 286, 6, 71, "Input"],
+Cell[1092, 38, 1177, 26, 206, "Input"],
+Cell[2272, 66, 1637, 42, 233, "Input"],
+Cell[3912, 110, 2589, 58, 422, "Input"],
+Cell[6504, 170, 383, 11, 71, "Input"],
+Cell[6890, 183, 2539, 59, 557, "Input"],
+Cell[9432, 244, 6626, 144, 1124, "Input"],
+Cell[16061, 390, 747, 19, 98, "Input"],
+Cell[16811, 411, 500, 14, 98, "Input"],
+Cell[17314, 427, 234, 6, 43, "Input"],
+Cell[17551, 435, 3120, 74, 584, "Input"],
+Cell[20674, 511, 1089, 29, 179, "Input"],
+Cell[21766, 542, 1436, 36, 233, "Input"],
+Cell[23205, 580, 1328, 37, 233, "Input"],
+Cell[24536, 619, 397, 9, 71, "Input"],
+Cell[24936, 630, 720, 19, 179, "Input"],
+Cell[25659, 651, 1016, 23, 260, "Input"],
+Cell[26678, 676, 548, 15, 98, "Input"],
+Cell[27229, 693, 420, 11, 98, "Input"],
+Cell[27652, 706, 3102, 65, 422, "Input"],
+Cell[30757, 773, 2309, 44, 287, "Input"],
+Cell[33069, 819, 1329, 34, 206, "Input"],
+Cell[34401, 855, 1483, 37, 260, "Input"],
+Cell[35887, 894, 2337, 53, 476, "Input"],
+Cell[38227, 949, 5182, 119, 908, "Input"],
+Cell[43412, 1070, 1639, 38, 287, "Input"],
+Cell[45054, 1110, 1875, 45, 314, "Input"],
+Cell[46932, 1157, 1224, 27, 341, "Input"],
+Cell[48159, 1186, 502, 14, 98, "Input"],
+Cell[CellGroupData[{
+Cell[48686, 1204, 152, 2, 43, "Input"],
+Cell[48841, 1208, 79, 1, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41281, 1023, 101, 1, 38, "Subsubsection"],
-Cell[41385, 1026, 102, 2, 43, "Input"],
-Cell[CellGroupData[{
-Cell[41512, 1032, 163, 5, 43, "Input"],
-Cell[41678, 1039, 263, 3, 42, "Output"]
+Cell[48957, 1214, 151, 2, 43, "Input"],
+Cell[49111, 1218, 87, 1, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41978, 1047, 277, 6, 43, "Input"],
-Cell[42258, 1055, 177, 2, 42, "Output"]
+Cell[49235, 1224, 144, 2, 43, "Input"],
+Cell[49382, 1228, 79, 1, 42, "Output"]
+}, Open  ]],
+Cell[49476, 1232, 1623, 38, 449, "Input"],
+Cell[51102, 1272, 1858, 56, 314, "Input"],
+Cell[52963, 1330, 1778, 46, 206, "Input"],
+Cell[54744, 1378, 5608, 131, 935, "Input"],
+Cell[60355, 1511, 10735, 223, 1718, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42472, 1062, 240, 5, 43, "Input"],
-Cell[42715, 1069, 272, 4, 42, "Output"]
+Cell[71127, 1739, 98, 1, 54, "Subsection"],
+Cell[CellGroupData[{
+Cell[71250, 1744, 263, 5, 43, "Input"],
+Cell[71516, 1751, 150, 2, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[43024, 1078, 171, 3, 43, "Input"],
-Cell[43198, 1083, 292, 4, 42, "Output"]
-}, Open  ]],
-Cell[43505, 1090, 134, 2, 43, "Input"],
-Cell[43642, 1094, 149, 2, 43, "Input"],
-Cell[43794, 1098, 208, 4, 43, "Input"],
-Cell[44005, 1104, 143, 2, 71, "Input"],
-Cell[CellGroupData[{
-Cell[44173, 1110, 344, 8, 43, "Input"],
-Cell[44520, 1120, 137, 2, 42, "Output"]
+Cell[71703, 1758, 224, 4, 43, "Input"],
+Cell[71930, 1764, 164, 2, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[44694, 1127, 267, 6, 43, "Input"],
-Cell[44964, 1135, 187, 2, 42, "Output"]
+Cell[72131, 1771, 107, 1, 38, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[72263, 1776, 241, 6, 43, "Input"],
+Cell[72507, 1784, 172, 2, 42, "Output"]
+}, Open  ]],
+Cell[72694, 1789, 89, 1, 43, "Input"],
+Cell[72786, 1792, 87, 1, 71, "Input"],
+Cell[72876, 1795, 102, 2, 43, "Input"],
+Cell[CellGroupData[{
+Cell[73003, 1801, 163, 5, 43, "Input"],
+Cell[73169, 1808, 360, 4, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45188, 1142, 294, 6, 43, "Input"],
-Cell[45485, 1150, 213, 2, 42, "Output"]
+Cell[73566, 1817, 240, 5, 43, "Input"],
+Cell[73809, 1824, 372, 5, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45735, 1157, 514, 13, 43, "Input"],
-Cell[46252, 1172, 210, 3, 42, "Output"]
+Cell[74218, 1834, 171, 3, 43, "Input"],
+Cell[74392, 1839, 457, 6, 42, "Output"]
+}, Open  ]],
+Cell[74864, 1848, 210, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[75099, 1855, 114, 2, 43, "Input"],
+Cell[75216, 1859, 170, 2, 42, "Output"]
+}, Open  ]],
+Cell[75401, 1864, 89, 1, 43, "Input"],
+Cell[75493, 1867, 134, 2, 43, "Input"],
+Cell[75630, 1871, 149, 2, 43, "Input"],
+Cell[75782, 1875, 87, 1, 71, "Input"],
+Cell[CellGroupData[{
+Cell[75894, 1880, 246, 5, 43, "Input"],
+Cell[76143, 1887, 203, 2, 42, "Output"]
+}, Open  ]],
+Cell[76361, 1892, 167, 3, 43, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[46499, 1180, 272, 6, 43, "Input"],
-Cell[46774, 1188, 189, 2, 42, "Output"]
+Cell[76565, 1900, 109, 1, 38, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[76699, 1905, 223, 5, 43, "Input"],
+Cell[76925, 1912, 178, 2, 42, "Output"]
+}, Open  ]],
+Cell[77118, 1917, 98, 2, 43, "Input"],
+Cell[77219, 1921, 87, 1, 71, "Input"],
+Cell[77309, 1924, 89, 1, 71, "Input"],
+Cell[CellGroupData[{
+Cell[77423, 1929, 159, 3, 43, "Input"],
+Cell[77585, 1934, 188, 2, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47000, 1195, 245, 5, 43, "Input"],
-Cell[47248, 1202, 189, 2, 42, "Output"]
+Cell[77810, 1941, 684, 13, 43, "Input"],
+Cell[78497, 1956, 341, 5, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47474, 1209, 545, 15, 43, "Input"],
-Cell[48022, 1226, 245, 3, 42, "Output"]
+Cell[78875, 1966, 405, 11, 71, "Input"],
+Cell[79283, 1979, 188, 2, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[79508, 1986, 342, 8, 43, "Input"],
+Cell[79853, 1996, 214, 4, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[80104, 2005, 175, 3, 43, "Input"],
+Cell[80282, 2010, 229, 3, 42, "Output"]
+}, Open  ]],
+Cell[80526, 2016, 168, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[80719, 2023, 142, 2, 43, "Input"],
+Cell[80864, 2027, 176, 2, 42, "Output"]
+}, Open  ]],
+Cell[81055, 2032, 98, 2, 43, "Input"],
+Cell[CellGroupData[{
+Cell[81178, 2038, 155, 2, 43, "Input"],
+Cell[81336, 2042, 491, 10, 35, "Message"],
+Cell[81830, 2054, 6143, 158, 231, "Output"]
+}, Closed]],
+Cell[87988, 2215, 89, 1, 60, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[88126, 2222, 94, 1, 54, "Subsection"],
+Cell[88223, 2225, 87, 1, 71, "Input"],
+Cell[CellGroupData[{
+Cell[88335, 2230, 122, 2, 43, "Input"],
+Cell[CellGroupData[{
+Cell[88482, 2236, 377, 6, 63, "Print",
+ CellTags->"Info3562692651-7776880"],
+Cell[88862, 2244, 2950, 72, 156, "Print",
+ CellTags->"Info3562692651-7776880"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[91861, 2322, 128, 2, 43, "Input"],
+Cell[CellGroupData[{
+Cell[92014, 2328, 217, 4, 63, "Print",
+ CellTags->"Info3562692822-7776880"],
+Cell[92234, 2334, 1675, 40, 108, "Print",
+ CellTags->"Info3562692822-7776880"]
+}, Open  ]]
+}, Open  ]],
+Cell[93936, 2378, 130, 2, 43, "Input"],
+Cell[CellGroupData[{
+Cell[94091, 2384, 262, 7, 43, "Input"],
+Cell[94356, 2393, 300, 6, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[94693, 2404, 237, 5, 43, "Input"],
+Cell[94933, 2411, 397, 9, 42, "Output"]
+}, Open  ]],
+Cell[95345, 2423, 152, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[95522, 2430, 143, 2, 43, "Input"],
+Cell[95668, 2434, 101, 1, 42, "Output"]
+}, Open  ]],
+Cell[95784, 2438, 85, 2, 43, "Input"],
+Cell[95872, 2442, 87, 1, 71, "Input"],
+Cell[95962, 2445, 69, 1, 43, "Input"],
+Cell[96034, 2448, 40, 0, 43, "Input"],
+Cell[CellGroupData[{
+Cell[96099, 2452, 163, 3, 43, "Input"],
+Cell[96265, 2457, 122, 1, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[96424, 2463, 167, 4, 43, "Input"],
+Cell[96594, 2469, 169, 3, 42, "Output"]
+}, Open  ]],
+Cell[96778, 2475, 153, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[96956, 2482, 262, 5, 43, "Input"],
+Cell[97221, 2489, 271, 5, 42, "Output"]
+}, Open  ]],
+Cell[97507, 2497, 150, 2, 98, "Input"],
+Cell[CellGroupData[{
+Cell[97682, 2503, 279, 7, 43, "Input"],
+Cell[97964, 2512, 299, 6, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[98300, 2523, 194, 4, 43, "Input"],
+Cell[98497, 2529, 444, 9, 42, "Output"]
+}, Open  ]],
+Cell[98956, 2541, 171, 3, 43, "Input"],
+Cell[99130, 2546, 155, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[99310, 2553, 170, 4, 43, "Input"],
+Cell[99483, 2559, 126, 2, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[99646, 2566, 146, 2, 43, "Input"],
+Cell[99795, 2570, 129, 2, 42, "Output"]
+}, Open  ]],
+Cell[99939, 2575, 158, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[100122, 2582, 156, 2, 43, "Input"],
+Cell[100281, 2586, 84, 1, 42, "Output"]
+}, Open  ]],
+Cell[100380, 2590, 89, 1, 71, "Input"],
+Cell[100472, 2593, 87, 1, 71, "Input"],
+Cell[100562, 2596, 152, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[100739, 2603, 190, 4, 43, "Input"],
+Cell[100932, 2609, 357, 8, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[101326, 2622, 230, 6, 43, "Input"],
+Cell[101559, 2630, 345, 8, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[101941, 2643, 180, 4, 43, "Input"],
+Cell[102124, 2649, 521, 11, 123, "Message"],
+Cell[102648, 2662, 104, 1, 42, "Output"]
+}, Open  ]],
+Cell[102767, 2666, 1858, 56, 314, "Input"],
+Cell[104628, 2724, 1778, 46, 206, "Input"],
+Cell[106409, 2772, 139, 2, 43, "Input"],
+Cell[CellGroupData[{
+Cell[106573, 2778, 214, 4, 43, "Input"],
+Cell[106790, 2784, 323, 6, 42, "Output"]
+}, Open  ]],
+Cell[107128, 2793, 592, 15, 43, "Input"],
+Cell[CellGroupData[{
+Cell[107745, 2812, 1285, 32, 125, "Input"],
+Cell[109033, 2846, 102, 1, 42, "Output"]
+}, Open  ]],
+Cell[109150, 2850, 887, 24, 152, "Input"],
+Cell[CellGroupData[{
+Cell[110062, 2878, 160, 2, 43, "Input"],
+Cell[110225, 2882, 108, 1, 42, "Output"]
+}, Open  ]],
+Cell[110348, 2886, 134, 2, 43, "Input"],
+Cell[CellGroupData[{
+Cell[110507, 2892, 279, 7, 43, "Input"],
+Cell[110789, 2901, 299, 6, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[111125, 2912, 194, 4, 43, "Input"],
+Cell[111322, 2918, 444, 9, 42, "Output"]
+}, Open  ]],
+Cell[111781, 2930, 171, 3, 43, "Input"],
+Cell[111955, 2935, 155, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[112135, 2942, 170, 4, 43, "Input"],
+Cell[112308, 2948, 126, 2, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[112471, 2955, 146, 2, 43, "Input"],
+Cell[112620, 2959, 129, 2, 42, "Output"]
+}, Open  ]],
+Cell[112764, 2964, 158, 3, 43, "Input"],
+Cell[112925, 2969, 5400, 127, 935, "Input"],
+Cell[118328, 3098, 68, 1, 43, "Input"],
+Cell[CellGroupData[{
+Cell[118421, 3103, 182, 3, 43, "Input"],
+Cell[118606, 3108, 71, 1, 42, "Output"]
+}, Open  ]],
+Cell[118692, 3112, 194, 4, 43, "Input"],
+Cell[118889, 3118, 92, 1, 43, "Input"],
+Cell[118984, 3121, 71, 1, 43, "Input"],
+Cell[CellGroupData[{
+Cell[119080, 3126, 168, 3, 43, "Input"],
+Cell[119251, 3131, 124, 1, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[119412, 3137, 270, 5, 43, "Input"],
+Cell[119685, 3144, 143, 2, 42, "Output"]
+}, Open  ]],
+Cell[119843, 3149, 156, 3, 43, "Input"],
+Cell[120002, 3154, 87, 1, 71, "Input"],
+Cell[CellGroupData[{
+Cell[120114, 3159, 322, 8, 43, "Input"],
+Cell[120439, 3169, 300, 6, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120776, 3180, 183, 4, 43, "Input"],
+Cell[120962, 3186, 400, 9, 42, "Output"]
+}, Open  ]],
+Cell[121377, 3198, 149, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[121551, 3205, 131, 2, 43, "Input"],
+Cell[121685, 3209, 372, 7, 42, "Output"]
+}, Open  ]],
+Cell[122072, 3219, 152, 3, 43, "Input"],
+Cell[CellGroupData[{
+Cell[122249, 3226, 217, 4, 43, "Input"],
+Cell[122469, 3232, 109, 1, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122615, 3238, 161, 3, 43, "Input"],
+Cell[122779, 3243, 116, 1, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122932, 3249, 185, 3, 43, "Input"],
+Cell[123120, 3254, 74, 1, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[123231, 3260, 174, 3, 43, "Input"],
+Cell[123408, 3265, 90, 1, 42, "Output"]
+}, Open  ]],
+Cell[123513, 3269, 152, 3, 43, "Input"],
+Cell[123668, 3274, 222, 3, 43, "Input"],
+Cell[123893, 3279, 89, 1, 71, "Input"],
+Cell[CellGroupData[{
+Cell[124007, 3284, 107, 1, 38, "Subsubsection"],
+Cell[124117, 3287, 168, 3, 43, "Input"],
+Cell[124288, 3292, 87, 1, 71, "Input"],
+Cell[124378, 3295, 1639, 38, 287, "Input"],
+Cell[126020, 3335, 1875, 45, 314, "Input"],
+Cell[127898, 3382, 102, 2, 43, "Input"],
+Cell[CellGroupData[{
+Cell[128025, 3388, 344, 8, 43, "Input"],
+Cell[128372, 3398, 304, 4, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[128713, 3407, 267, 6, 43, "Input"],
+Cell[128983, 3415, 354, 4, 42, "Output"]
+}, Open  ]],
+Cell[129352, 3422, 320, 7, 43, "Input"],
+Cell[CellGroupData[{
+Cell[129697, 3433, 246, 5, 43, "Input"],
+Cell[129946, 3440, 404, 6, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[130387, 3451, 273, 6, 43, "Input"],
+Cell[130663, 3459, 238, 3, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[130938, 3467, 174, 3, 43, "Input"],
+Cell[131115, 3472, 320, 4, 42, "Output"]
+}, Open  ]],
+Cell[131450, 3479, 92, 1, 43, "Input"],
+Cell[131545, 3482, 1830, 36, 341, "Input"],
+Cell[CellGroupData[{
+Cell[133400, 3522, 264, 6, 43, "Input"],
+Cell[133667, 3530, 317, 4, 42, "Output"]
+}, Open  ]],
+Cell[133999, 3537, 148, 2, 98, "Input"],
+Cell[CellGroupData[{
+Cell[134172, 3543, 344, 8, 43, "Input"],
+Cell[134519, 3553, 158, 2, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[134714, 3560, 267, 6, 43, "Input"],
+Cell[134984, 3568, 211, 2, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[135232, 3575, 294, 6, 43, "Input"],
+Cell[135529, 3583, 213, 2, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[135779, 3590, 514, 13, 43, "Input"],
+Cell[136296, 3605, 210, 3, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[136543, 3613, 272, 6, 43, "Input"],
+Cell[136818, 3621, 189, 2, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[137044, 3628, 245, 5, 43, "Input"],
+Cell[137292, 3635, 189, 2, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[137518, 3642, 545, 15, 43, "Input"],
+Cell[138066, 3659, 245, 3, 42, "Output"]
 }, Open  ]]
 }, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[138372, 3669, 94, 1, 40, "Subsection"],
+Cell[138469, 3672, 268, 5, 38, "Subsubsection"],
+Cell[138740, 3679, 169, 2, 27, "Subsubsection"],
+Cell[138912, 3683, 213, 4, 27, "Subsubsection"],
+Cell[139128, 3689, 223, 4, 27, "Subsubsection"],
+Cell[139354, 3695, 135, 1, 27, "Subsubsection"],
+Cell[139492, 3698, 219, 4, 27, "Subsubsection"],
+Cell[139714, 3704, 114, 1, 27, "Subsubsection"],
+Cell[139831, 3707, 206, 3, 27, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[140062, 3714, 296, 5, 27, "Subsubsection"],
+Cell[140361, 3721, 89, 1, 71, "Input"]
+}, Open  ]],
+Cell[140465, 3725, 145, 1, 38, "Subsubsection"],
+Cell[140613, 3728, 114, 1, 27, "Subsubsection"],
+Cell[140730, 3731, 241, 4, 27, "Subsubsection"],
+Cell[140974, 3737, 263, 5, 27, "Subsubsection"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48328, 1236, 94, 1, 54, "Subsection"],
-Cell[48425, 1239, 143, 3, 38, "Subsubsection"],
-Cell[48571, 1244, 110, 1, 27, "Subsubsection"],
-Cell[48684, 1247, 114, 1, 27, "Subsubsection"],
-Cell[48801, 1250, 219, 4, 27, "Subsubsection"],
-Cell[49023, 1256, 114, 1, 27, "Subsubsection"],
-Cell[49140, 1259, 107, 1, 27, "Subsubsection"]
+Cell[141286, 3748, 91, 1, 105, "Section"],
+Cell[141380, 3751, 617, 14, 330, "Input"],
+Cell[CellGroupData[{
+Cell[142022, 3769, 286, 7, 238, "Input"],
+Cell[142311, 3778, 134, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[49284, 1265, 94, 1, 54, "Subsection"],
-Cell[49381, 1268, 617, 14, 98, "Input"],
-Cell[CellGroupData[{
-Cell[50023, 1286, 286, 7, 71, "Input"],
-Cell[50312, 1295, 134, 2, 42, "Output"]
+Cell[142482, 3785, 205, 4, 144, "Input"],
+Cell[142690, 3791, 333, 7, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[50483, 1302, 205, 4, 43, "Input"],
-Cell[50691, 1308, 333, 7, 42, "Output"]
+Cell[143060, 3803, 144, 3, 144, "Input"],
+Cell[143207, 3808, 848, 16, 904, "Message"],
+Cell[144058, 3826, 480, 9, 117, "Message"],
+Cell[144541, 3837, 72, 1, 141, "Output"]
+}, Open  ]],
+Cell[144628, 3841, 149, 2, 144, "Input"],
+Cell[CellGroupData[{
+Cell[144802, 3847, 381, 9, 144, "Input"],
+Cell[145186, 3858, 215, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[51061, 1320, 144, 3, 43, "Input"],
-Cell[51208, 1325, 848, 16, 268, "Message"],
-Cell[52059, 1343, 480, 9, 35, "Message"],
-Cell[52542, 1354, 72, 1, 42, "Output"]
-}, Open  ]],
-Cell[52629, 1358, 149, 2, 43, "Input"],
-Cell[CellGroupData[{
-Cell[52803, 1364, 381, 9, 43, "Input"],
-Cell[53187, 1375, 215, 2, 42, "Output"]
+Cell[145438, 3865, 271, 6, 144, "Input"],
+Cell[145712, 3873, 354, 8, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[53439, 1382, 271, 6, 43, "Input"],
-Cell[53713, 1390, 354, 8, 42, "Output"]
+Cell[146103, 3886, 121, 2, 144, "Input"],
+Cell[146227, 3890, 108, 1, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[54104, 1403, 121, 2, 43, "Input"],
-Cell[54228, 1407, 108, 1, 42, "Output"]
+Cell[146372, 3896, 163, 5, 144, "Input"],
+Cell[146538, 3903, 153, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[54373, 1413, 163, 5, 43, "Input"],
-Cell[54539, 1420, 153, 2, 42, "Output"]
+Cell[146728, 3910, 323, 8, 144, "Input"],
+Cell[147054, 3920, 186, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[54729, 1427, 323, 8, 43, "Input"],
-Cell[55055, 1437, 186, 2, 42, "Output"]
+Cell[147277, 3927, 216, 5, 144, "Input"],
+Cell[147496, 3934, 351, 8, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[55278, 1444, 216, 5, 43, "Input"],
-Cell[55497, 1451, 351, 8, 42, "Output"]
+Cell[147884, 3947, 53, 1, 144, "Input"],
+Cell[147940, 3950, 144, 2, 141, "Output"]
+}, Open  ]],
+Cell[148099, 3955, 2381, 56, 1878, "Input"],
+Cell[CellGroupData[{
+Cell[150505, 4015, 225, 4, 144, "Input"],
+Cell[150733, 4021, 208, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[55885, 1464, 53, 1, 43, "Input"],
-Cell[55941, 1467, 144, 2, 42, "Output"]
-}, Open  ]],
-Cell[56100, 1472, 2381, 56, 557, "Input"],
-Cell[CellGroupData[{
-Cell[58506, 1532, 225, 4, 43, "Input"],
-Cell[58734, 1538, 208, 2, 42, "Output"]
+Cell[150978, 4028, 180, 4, 144, "Input"],
+Cell[151161, 4034, 130, 1, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[58979, 1545, 180, 4, 43, "Input"],
-Cell[59162, 1551, 130, 1, 42, "Output"]
+Cell[151328, 4040, 229, 5, 144, "Input"],
+Cell[151560, 4047, 796, 17, 229, "Output"]
+}, Open  ]],
+Cell[152371, 4067, 747, 19, 330, "Input"],
+Cell[153121, 4088, 500, 14, 330, "Input"],
+Cell[153624, 4104, 234, 6, 144, "Input"],
+Cell[153861, 4112, 3120, 74, 1971, "Input"],
+Cell[156984, 4188, 1089, 29, 603, "Input"],
+Cell[158076, 4219, 678, 18, 330, "Input"],
+Cell[158757, 4239, 1219, 34, 603, "Input"],
+Cell[159979, 4275, 608, 15, 330, "Input"],
+Cell[CellGroupData[{
+Cell[160612, 4294, 270, 6, 144, "Input"],
+Cell[160885, 4302, 153, 2, 141, "Output"]
+}, Open  ]],
+Cell[161053, 4307, 207, 4, 144, "Input"],
+Cell[CellGroupData[{
+Cell[161285, 4315, 267, 6, 144, "Input"],
+Cell[161555, 4323, 213, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[59329, 1557, 229, 5, 43, "Input"],
-Cell[59561, 1564, 796, 17, 68, "Output"]
+Cell[161805, 4330, 281, 6, 144, "Input"],
+Cell[162089, 4338, 213, 2, 141, "Output"]
 }, Open  ]],
-Cell[60372, 1584, 747, 19, 98, "Input"],
-Cell[61122, 1605, 500, 14, 98, "Input"],
-Cell[61625, 1621, 234, 6, 43, "Input"],
-Cell[61862, 1629, 3120, 74, 584, "Input"],
-Cell[64985, 1705, 1089, 29, 179, "Input"],
-Cell[66077, 1736, 678, 18, 98, "Input"],
-Cell[66758, 1756, 1219, 34, 179, "Input"],
-Cell[67980, 1792, 608, 15, 98, "Input"],
+Cell[162317, 4343, 267, 7, 144, "Input"],
 Cell[CellGroupData[{
-Cell[68613, 1811, 270, 6, 43, "Input"],
-Cell[68886, 1819, 153, 2, 42, "Output"]
+Cell[162609, 4354, 150, 4, 144, "Input"],
+Cell[162762, 4360, 326, 7, 141, "Output"]
 }, Open  ]],
-Cell[69054, 1824, 207, 4, 43, "Input"],
+Cell[163103, 4370, 311, 7, 144, "Input"],
 Cell[CellGroupData[{
-Cell[69286, 1832, 267, 6, 43, "Input"],
-Cell[69556, 1840, 213, 2, 42, "Output"]
+Cell[163439, 4381, 648, 17, 144, "Input"],
+Cell[164090, 4400, 267, 4, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[69806, 1847, 281, 6, 43, "Input"],
-Cell[70090, 1855, 213, 2, 42, "Output"]
+Cell[164394, 4409, 519, 8, 144, "Input"],
+Cell[164916, 4419, 224, 3, 141, "Output"]
 }, Open  ]],
-Cell[70318, 1860, 267, 7, 43, "Input"],
+Cell[165155, 4425, 258, 6, 144, "Input"],
 Cell[CellGroupData[{
-Cell[70610, 1871, 150, 4, 43, "Input"],
-Cell[70763, 1877, 326, 7, 42, "Output"]
-}, Open  ]],
-Cell[71104, 1887, 311, 7, 43, "Input"],
-Cell[CellGroupData[{
-Cell[71440, 1898, 648, 17, 43, "Input"],
-Cell[72091, 1917, 267, 4, 42, "Output"]
+Cell[165438, 4435, 117, 1, 144, "Input"],
+Cell[165558, 4438, 153, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[72395, 1926, 519, 8, 43, "Input"],
-Cell[72917, 1936, 224, 3, 42, "Output"]
-}, Open  ]],
-Cell[73156, 1942, 258, 6, 43, "Input"],
-Cell[CellGroupData[{
-Cell[73439, 1952, 117, 1, 43, "Input"],
-Cell[73559, 1955, 153, 2, 42, "Output"]
+Cell[165748, 4445, 31, 0, 144, "Input"],
+Cell[165782, 4447, 269, 4, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[73749, 1962, 31, 0, 43, "Input"],
-Cell[73783, 1964, 269, 4, 42, "Output"]
+Cell[166088, 4456, 189, 4, 144, "Input"],
+Cell[166280, 4462, 115, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[74089, 1973, 189, 4, 43, "Input"],
-Cell[74281, 1979, 115, 2, 42, "Output"]
+Cell[166432, 4469, 193, 3, 144, "Input"],
+Cell[166628, 4474, 151, 2, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[74433, 1986, 193, 3, 43, "Input"],
-Cell[74629, 1991, 151, 2, 42, "Output"]
+Cell[166816, 4481, 265, 6, 144, "Input"],
+Cell[167084, 4489, 263, 4, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[74817, 1998, 265, 6, 43, "Input"],
-Cell[75085, 2006, 263, 4, 42, "Output"]
+Cell[167384, 4498, 207, 3, 144, "Input"],
+Cell[167594, 4503, 261, 4, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[75385, 2015, 207, 3, 43, "Input"],
-Cell[75595, 2020, 261, 4, 42, "Output"]
+Cell[167892, 4512, 300, 7, 144, "Input"],
+Cell[168195, 4521, 242, 3, 141, "Output"]
+}, Open  ]],
+Cell[168452, 4527, 162, 3, 144, "Input"],
+Cell[CellGroupData[{
+Cell[168639, 4534, 744, 18, 330, "Input"],
+Cell[169386, 4554, 298, 4, 141, "Output"]
+}, Open  ]],
+Cell[169699, 4561, 200, 5, 144, "Input"],
+Cell[CellGroupData[{
+Cell[169924, 4570, 989, 24, 603, "Input"],
+Cell[170916, 4596, 801, 14, 397, "Output"]
+}, Open  ]],
+Cell[171732, 4613, 221, 5, 144, "Input"],
+Cell[CellGroupData[{
+Cell[171978, 4622, 31, 0, 144, "Input"],
+Cell[172012, 4624, 218, 3, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[75893, 2029, 300, 7, 43, "Input"],
-Cell[76196, 2038, 242, 3, 42, "Output"]
-}, Open  ]],
-Cell[76453, 2044, 162, 3, 43, "Input"],
-Cell[CellGroupData[{
-Cell[76640, 2051, 744, 18, 98, "Input"],
-Cell[77387, 2071, 298, 4, 42, "Output"]
-}, Open  ]],
-Cell[77700, 2078, 200, 5, 43, "Input"],
-Cell[CellGroupData[{
-Cell[77925, 2087, 989, 24, 179, "Input"],
-Cell[78917, 2113, 801, 14, 118, "Output"]
-}, Open  ]],
-Cell[79733, 2130, 221, 5, 43, "Input"],
-Cell[CellGroupData[{
-Cell[79979, 2139, 31, 0, 43, "Input"],
-Cell[80013, 2141, 218, 3, 42, "Output"]
+Cell[172267, 4632, 42, 0, 144, "Input"],
+Cell[172312, 4634, 214, 3, 141, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[80268, 2149, 42, 0, 43, "Input"],
-Cell[80313, 2151, 214, 3, 42, "Output"]
+Cell[172563, 4642, 383, 9, 144, "Input"],
+Cell[172949, 4653, 200, 2, 141, "Output"]
 }, Open  ]],
+Cell[173164, 4658, 205, 5, 144, "Input"],
 Cell[CellGroupData[{
-Cell[80564, 2159, 383, 9, 43, "Input"],
-Cell[80950, 2170, 200, 2, 42, "Output"]
+Cell[173394, 4667, 412, 10, 144, "Input"],
+Cell[173809, 4679, 168, 4, 141, "Output"]
 }, Open  ]],
-Cell[81165, 2175, 205, 5, 43, "Input"],
+Cell[173992, 4686, 228, 6, 144, "Input"],
+Cell[174223, 4694, 89, 1, 238, "Input"],
+Cell[174315, 4697, 151, 2, 144, "Input"],
 Cell[CellGroupData[{
-Cell[81395, 2184, 412, 10, 43, "Input"],
-Cell[81810, 2196, 168, 4, 42, "Output"]
-}, Open  ]],
-Cell[81993, 2203, 228, 6, 43, "Input"],
-Cell[82224, 2211, 89, 1, 71, "Input"],
-Cell[82316, 2214, 151, 2, 43, "Input"],
+Cell[174491, 4703, 134, 2, 144, "Input"],
 Cell[CellGroupData[{
-Cell[82492, 2220, 134, 2, 43, "Input"],
-Cell[CellGroupData[{
-Cell[82651, 2226, 143, 2, 60, "Print",
+Cell[174650, 4709, 143, 2, 202, "Print",
  CellTags->"Info3562528504-5851878"],
-Cell[82797, 2230, 2490, 62, 151, "Print",
+Cell[174796, 4713, 2490, 62, 508, "Print",
  CellTags->"Info3562528504-5851878"]
 }, Open  ]]
 }, Open  ]],
-Cell[85314, 2296, 158, 3, 43, "Input"]
+Cell[177313, 4779, 158, 3, 144, "Input"]
 }, Closed]]
 }
 ]
