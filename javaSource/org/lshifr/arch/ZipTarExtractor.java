@@ -61,6 +61,8 @@ public class ZipTarExtractor {
 				result = ArchiveError.SOME_FILE_NOT_FOUND;
 			} catch (IOException ex){
 				result = ArchiveError.IO_ERROR;
+			} catch (WritePermissionDeniedException ex){
+				result = ArchiveError.WRITE_PERMISSION_ERROR;
 			}
 			lastError = result;
 			return result;
@@ -100,16 +102,28 @@ public class ZipTarExtractor {
 	    TarArchiveEntry entry = null; 
 	    while ((entry = (TarArchiveEntry)debInputStream.getNextEntry()) != null) {
 	        final File outputFile = new File(outputDir, entry.getName());
+	        if(! outputFile.setWritable(true)){
+	        	throw new WritePermissionDeniedException("Can not create a writable directory");
+	        }
 	        if (entry.isDirectory()) {
 	            LOG.info(String.format("Attempting to write output directory %s.", outputFile.getAbsolutePath()));
 	            if (!outputFile.exists()) {
 	                LOG.info(String.format("Attempting to create output directory %s.", outputFile.getAbsolutePath()));
 	                if (!outputFile.mkdirs()) {
 	                    throw new IllegalStateException(String.format("Couldn't create directory %s.", outputFile.getAbsolutePath()));
-	                }
+	                }	                
 	            }
 	        } else {
 	            LOG.info(String.format("Creating output file %s.", outputFile.getAbsolutePath()));
+	            File parent = outputFile.getParentFile();				
+				if(!parent.exists()){					
+					LOG.info(String.format("Got a file entry before the parent directory entry." +
+							" Attempting to create the parent directory directory %s.", parent.getAbsolutePath()));					
+					if(!parent.mkdirs()){
+						throw new IllegalStateException(String.format("Couldn't create directory %s.", parent.getAbsolutePath()));
+					}
+				}
+	            outputFile.createNewFile();
 	            final OutputStream outputFileStream = new FileOutputStream(outputFile); 
 	            IOUtils.copy(debInputStream, outputFileStream);
 	            outputFileStream.close();
@@ -178,7 +192,7 @@ public class ZipTarExtractor {
 	    final ZipArchiveInputStream debInputStream = (ZipArchiveInputStream) new ArchiveStreamFactory().createArchiveInputStream("zip", is);
 	    ZipArchiveEntry entry = null; 
 	    while ((entry = (ZipArchiveEntry)debInputStream.getNextEntry()) != null) {
-	        final File outputFile = new File(outputDir, entry.getName());
+	        final File outputFile = new File(outputDir, entry.getName());	        
 	        if (entry.isDirectory()) {
 	            LOG.info(String.format("Attempting to write output directory %s.", outputFile.getAbsolutePath()));
 	            if (!outputFile.exists()) {
@@ -189,6 +203,15 @@ public class ZipTarExtractor {
 	            }
 	        } else {
 	            LOG.info(String.format("Creating output file %s.", outputFile.getAbsolutePath()));
+	            File parent = outputFile.getParentFile();				
+				if(!parent.exists()){					
+					LOG.info(String.format("Got a file entry before the parent directory entry." +
+							" Attempting to create the parent directory directory %s.", parent.getAbsolutePath()));					
+					if(!parent.mkdirs()){
+						throw new IllegalStateException(String.format("Couldn't create directory %s.", parent.getAbsolutePath()));
+					}
+				}
+	            outputFile.createNewFile();
 	            final OutputStream outputFileStream = new FileOutputStream(outputFile); 
 	            IOUtils.copy(debInputStream, outputFileStream);
 	            outputFileStream.close();
@@ -196,7 +219,6 @@ public class ZipTarExtractor {
 	        unzippedFiles.add(outputFile);
 	    }
 	    debInputStream.close(); 
-
 	    return unzippedFiles;
 	}
 

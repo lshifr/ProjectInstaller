@@ -7,6 +7,7 @@ public enum ArchiveError {
 	OUTPUTDIR_INVALID("output_dir_invalid"),
 	CANNOT_CREATE_DIRS("cannot_create_dirs"),
 	ARCHIVE_ERROR("archive_error"),
+	WRITE_PERMISSION_ERROR("write_permission_error"),
 	IO_ERROR("io_error");
 	
 	public final String msg;
