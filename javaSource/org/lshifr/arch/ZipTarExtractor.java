@@ -101,10 +101,7 @@ public class ZipTarExtractor {
 	    final TarArchiveInputStream debInputStream = (TarArchiveInputStream) new ArchiveStreamFactory().createArchiveInputStream("tar", is);
 	    TarArchiveEntry entry = null; 
 	    while ((entry = (TarArchiveEntry)debInputStream.getNextEntry()) != null) {
-	        final File outputFile = new File(outputDir, entry.getName());
-	        if(! outputFile.setWritable(true)){
-	        	throw new WritePermissionDeniedException("Can not create a writable directory");
-	        }
+	        final File outputFile = new File(outputDir, entry.getName());	        
 	        if (entry.isDirectory()) {
 	            LOG.info(String.format("Attempting to write output directory %s.", outputFile.getAbsolutePath()));
 	            if (!outputFile.exists()) {
