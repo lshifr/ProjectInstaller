@@ -2,18 +2,58 @@
 
 (* Created by the Wolfram Workbench 21.11.2012 *)
 
+
+
+(* :Title: ProjectInstaller *)
+
+(* :Context: ProjectInstaller` *)
+
+(* :Author:
+        Leonid Shifrin
+        lshifr@gmail.com
+*)
+
+(* :Package Version: 1.0 *)
+
+(* :Mathematica Version: 8.0 *)
+
+(* :Copyright: Leonid Shifrin, 2012.  *)
+
+(* :Discussion:
+
+   ProjectInstaller is a simple web installer for Mathematica projects, stored
+   on the web in .zip or .tar.gz formats. It attempts to download and install
+   a given project into a specified project directory.   
+      
+*)
+
+(* :Keywords: projects, install *)
+
+
+
+
 BeginPackage["ProjectInstaller`",{"Utilities`URLTools`"}]
 (* Exported symbols added here with SymbolName::usage *)
 
-ProjectInstall; 
+ProjectInstall::usage = 
+"ProjectInstall[url, opts ] attempts to download and install the Mathematica project by following the \
+url. The url must have the form URL[_String]. The project must exist on the server as an archve file \
+with .zip or .tar.gz extension. 
+
+ProjectInstall[path, opts ] ettempts to install the Mathematica project located at the path on the \
+local machine. The project must be an archve file with .zip or .tar.gz extension."; 
 
 
-ProjectUninstall;
+ProjectUninstall::usage = 
+"ProjectInstall[name, opts] uninstalls the project with the name name";
 
 
-DestinationDirectory;
+DestinationDirectory::usage = "An option for ProjectInstall and ProjectUninstall, that specifies a \ 
+path to a local project reposotory. The default for that is $UserBaseDirectory/Applications";
 
-TempBaseDirectory;
+TempBaseDirectory::usage = "An option for ProjectInstall, that specifies the location of the \
+temporary directory, to be used by intermediate steps of ProjectInstall. The directory must exist
+and be writable.";
 
 
 
@@ -69,6 +109,36 @@ showIt[x__]:=(Print[x];x);
 
 throwError[fun_, args___]:=
 	Throw[$Failed, error[fun, args]];
+	
+	
+	
+ClearAll[handleError];
+SetAttributes[handleError, HoldFirst];
+Options[handleError] = {
+   GenerateErrorMessage -> True   
+};  
+   
+handleError[code_, attachMessageTo_Symbol, opts : OptionsPattern[]] := 
+	With[{msgQ = OptionValue[GenerateErrorMessage]},
+		Catch[
+			code, 
+			_error,
+			Function[{value, tag},
+				If[TrueQ@msgQ,
+					Message[attachMessageTo::err, Style[First@tag, Red]]
+				];
+				value
+     		]
+     	]
+     ];
+     
+handleError[code_]:=
+	Catch[code,_error,
+		 Function[{value, tag},
+		 	{value, tag}
+		 ]
+	];
+     	
 
 
 ClearAll[tryAlternatives];
@@ -788,9 +858,64 @@ projectUninstall[prname_String, opts : OptionsPattern[]]:= {};
 (******************************************************************************) 	
  	
  	
+ClearAll[handleErrorFor]; 
+ 	
+handleErrorFor[ProjectInstall][error[fun_,args___]]:=
+	handleErrorFor[ProjectInstall][fun][args];
+	
+handleErrorFor[ProjectInstall][failIfProjectAlreadyExists]["project_already_exists"]:=
+	Message[ProjectInstall::exists];
+	
+handleErrorFor[ProjectInstall][getAttachementFileName]["404"]:=
+	Message[ProjectInstall::notfnd];
+	
+handleErrorFor[ProjectInstall][determineProjectName]["no_packages_on_the_top_level"]:=
+	Message[ProjectInstall::nopckg];
+	
+handleErrorFor[ProjectInstall][determineProjectName]["no_project_file_and_more_than_one_package"]:=
+	Message[ProjectInstall::manypckg];
+	
+handleErrorFor[ProjectInstall][determineProjectName]["no_package_matching_project_name"]:=
+	Message[ProjectInstall::noprjpckg];
+	
+handleErrorFor[ProjectInstall][getProjectFile]["malformed_project_file"]:=
+	Message[ProjectInstall::badprjfile];
+	
+handleErrorFor[ProjectInstall][verifyProjectFileContent][]:=
+	Message[ProjectInstall::malfprjfile];
+	
+handleErrorFor[ProjectInstall][getAttachementFileName]["unable_to_guess_project_type"]:=
+	Message[ProjectInstall::unknwntype];
+	
+handleErrorFor[ProjectInstall][f_][args___]:=
+	Message[ProjectInstall::generr, Style[f,Red],Style[{args},Red]];
+
+
  	
  	
 ClearAll[ProjectInstall]; 
+
+ProjectInstall::exists = "The project already exists. Uninstall it first";
+
+ProjectInstall::notfnd = "No project archive file found on the server";
+
+ProjectInstall::nopckg = "The project has no packages in the top-level directory, and no project descriptor file \
+(project.m) either. It is therefore impossible for the installer to determine project's name";
+
+ProjectInstall::manypckg = "The project has no project descriptor (project.m file) and more than one package in the  \
+top-level project directory. It is therefore impossible for the installer to determine project's name";
+
+ProjectInstall::noprjpckg = "The project has no package in the top-level directory with the name mathcing the name of \
+the project specified in project's descriptor file (project.m)";
+
+ProjectInstall::badprjfile = "The project descriptor file (project.m) has syntax errors";
+
+ProjectInstall::malfprjfile = "The project descriptor file (project.m) is malformed. It must contain a rule or a list \
+of rules, possibly nested, containing strings and numbers only";
+
+ProjectInstall::unknwntype = "Unable to guess the project's type by reading the HTTP header";
+
+ProjectInstall::generr = "General error. The failure happened in function `1`, with the following additional information: `2`";
 
 ProjectInstall::badargs = "Bad number and /or types of arguments. The arguments were `1`";
 	
@@ -800,7 +925,13 @@ Options[ProjectInstall] = {
 };
 
 ProjectInstall[url: URL[_String], opts : OptionsPattern[]]:=
-	projectInstall[url, opts]; 	   
+	With[{result= handleError@Quiet@projectInstall[url, opts]},
+		If[MatchQ[result, {$Failed, _error}],
+			handleErrorFor[ProjectInstall][Last@result];
+			Return[$Failed]
+		];
+		result		
+	]; 	   
  	   
 ProjectInstall[path_String?FileExistsQ, opts : OptionsPattern[]] :=   
 	projectInstall[path, opts];
