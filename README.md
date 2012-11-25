@@ -72,7 +72,7 @@ first time at least):
  and extract it to some folder.
  - Copy it into one of the directories where *Mathematica* 
 can find it, for example into a directory returned by evaluating
-`FileNameJoin[$UserBaseDirectory,"Applications"]`
+`FileNameJoin[{$UserBaseDirectory,"Applications"}]`
  - Call ``Needs["ProjectInstaller`"]``
 
 ###How to use
