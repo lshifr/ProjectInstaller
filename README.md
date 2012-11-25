@@ -67,10 +67,11 @@ The installation procedure is standard, as for any *Mathematica*
 package (alas, the installer can not install itself, not for the 
 first time at least):
 
- - Download the .zip archive with the project and extract it so 
-some folder.
+ - Download the [.zip archive with the project]
+ (https://github.com/downloads/lshifr/ProjectInstaller/ProjectInstaller.zip) 
+ and extract it to some folder.
  - Copy it into one of the directories where *Mathematica* 
-can find it, for example in a directory returned by evaluating
+can find it, for example into a directory returned by evaluating
 `FileNameJoin[$UserBaseDirectory,"Applications"]`
  - Call ``Needs["ProjectInstaller`"]``
 
