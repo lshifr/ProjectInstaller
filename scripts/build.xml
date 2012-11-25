@@ -1,10 +1,7 @@
-<project name="ProjectInstaller" basedir=".." default="jar">
+<project name="ProjectInstaller" basedir=".." default="build">
 
 	<property name="rootdir" 			value="${basedir}" />
-	<property name= "pacletName" 		value = "ProjectInstaller" />	
-	
-	
-	
+	<property name= "pacletName" 		value = "ProjectInstaller" />		
 	
 	
 	<!-- Main build properties -->		
@@ -119,14 +116,53 @@
     <target name="jar" depends="clean, compile">
         <mkdir dir="${jar.dir}"/>    	
     	<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
-        	<manifest>
-        	    <!--  <attribute name="Main-Class"   value="com.wolfram.links.rlink.tests.rtest"/>    -->    		  
-        		<attribute name="Class-Path" value= "jna.jar commons-compress-1.2.jar log4j-1.2.16.jar"/>
+        	<manifest>        	      		  
+        		<attribute name="Class-Path" value= "commons-compress-1.2.jar log4j-1.2.16.jar"/>
         	</manifest>
         </jar>
     </target>
 	
 	
+	<target name = "build"  depends = "jar">
+			<mkdir dir="${dist}"/>
+			<mkdir dir="${dist}/Java"/>	
+			<mkdir dir="${dist}/Java/src"/>
+			<mkdir dir = "${dist}/Kernel"/>
+					
+			<!-- Copy jars -->
+			<copy todir="${dist}/Java">
+			    <fileset dir="${java.lib.dir}"/>			
+			</copy>
+			
+			<!-- Copy Java source files  -->
+			<copy todir="${dist}/Java/src">
+			    <fileset dir="${java.src.dir}">
+			    	<exclude name = "**/org/lshifr/arch/tests/**"/>
+			    </fileset>
+			</copy>
+			
+			
+			<copy todir="${dist}/Kernel">
+				<fileset 
+					dir="ProjectInstaller/Kernel">			
+				</fileset>
+			</copy>
+			<!-- The project's jar -->
+			<copy file="${jar.dir}/${ant.project.name}.jar" todir="${dist}/Java"/>
+		
+			<copy file="ProjectInstaller/ProjectInstaller.m" todir="${dist}"/>
+			<copy file="LICENSE" todir="${dist}"/>
+		    <copy file="README.md" todir="${dist}"/>
+		    <copy file="project.m" todir="${dist}"/>				
+		</target>
+	
+	    
+	    <target name = "zip"  depends = "build">
+	    	<zip destfile="${rootdir}/Release/ProjectInstaller.zip"
+	    	       basedir="${rootdir}/Build"
+	    	       update="true"
+	    	/>	    	
+	    </target>
 	  	
 
 </project>
