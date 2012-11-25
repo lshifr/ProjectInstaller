@@ -51,6 +51,14 @@ If there is more than one package in the top-level project's folder,
 then the project *must* contain a valid project descriptor file, with
 the `name` field set to the name of one of the top-level packages.
 
+Note that the installer (at least in the current version) will always
+create a `Kernel` folder and place there the `init.m` file for the 
+project. If the `init.m` file exists in the top-level directory of the
+archived project, it will be simply copied. If it does not exist, it
+will be auto-generated from the project's name and the name of the 
+main package in the project (which, at least currently, are required
+to be the same). 
+
 
 
 ###Installation
