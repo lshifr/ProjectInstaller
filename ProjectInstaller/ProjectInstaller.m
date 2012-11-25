@@ -68,17 +68,32 @@ Needs["ResourceLocator`"];
 
 (* Todo: replace this with a Throw[$Failed] definition *)
 
-$projectJarLocations = {
-   "C:\\Users\\Archie\\WolframWorkspaces\\Alt\\ProjectInstaller\\\
-javaOutput\\Build\\jar\\ProjectInstaller.jar",
-   "C:\\Users\\Archie\\WolframWorkspaces\\Alt\\ProjectInstaller\\\
-ProjectInstaller\\Java"
-   };
+
+$testMode = False;
+
+$projectLocation = 
+	With[{pos = Position[FileNameSplit[$InputFileName], "ProjectInstaller"][[If[$testMode, -2,-1],1]]},
+		FileNameTake[$InputFileName,pos]
+	];
+	
+	
+$projectJarLocations = 
+	If[$testMode,
+		{
+			FileNameJoin[{$projectLocation, "ProjectInstaller", "Java"}],
+			FileNameJoin[{$projectLocation,	"javaOutput", "Build", "jar"}]
+		},
+		(* else *)
+		{FileNameJoin[{$projectLocation,"Java"}]}
+	];
+
    
 $destinationDirectory = 
   FileNameJoin[{$UserBaseDirectory, "Applications"}];
   
   
+ 
+ 
 (******************************************************************************)
 (************ 			Generic helper functions			***************)
 (******************************************************************************)  
