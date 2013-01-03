@@ -63,7 +63,12 @@ to be the same).
 
 ###Installation
 
-The installation procedure is standard, as for any *Mathematica*
+For an automated installation, execute this line of code:
+
+    Import["https://raw.github.com/lshifr/ProjectInstaller/master/BootstrapInstall.m"]
+
+
+The manual installation procedure is standard, as for any *Mathematica*
 package (alas, the installer can not install itself, not for the 
 first time at least):
 
