@@ -37,7 +37,7 @@ BeginPackage["ProjectInstaller`",{"Utilities`URLTools`"}]
 
 ProjectInstall::usage = 
 "ProjectInstall[url, opts ] attempts to download and install the Mathematica project by following the \
-url. The url must have the form URL[_String]. The project must exist on the server as an archve file \
+url. The url must have the form URL[_String]. The project must exist on the server as an archive file \
 with .zip or .tar.gz extension. 
 
 ProjectInstall[path, opts ] ettempts to install the Mathematica project located at the path on the \
@@ -49,7 +49,7 @@ ProjectUninstall::usage =
 
 
 DestinationDirectory::usage = "An option for ProjectInstall and ProjectUninstall, that specifies a \ 
-path to a local project reposotory. The default for that is $UserBaseDirectory/Applications";
+path to a local project repository. The default for that is $UserBaseDirectory/Applications";
 
 TempBaseDirectory::usage = "An option for ProjectInstall, that specifies the location of the \
 temporary directory, to be used by intermediate steps of ProjectInstall. The directory must exist
@@ -64,6 +64,7 @@ Begin["`Private`"]
 
 Needs["JLink`"];
 Needs["ResourceLocator`"];
+Needs["PacletManager`"];
 
 
 (* Todo: replace this with a Throw[$Failed] definition *)
@@ -186,6 +187,35 @@ CleanUp[expr_, cleanup_] :=
    		If[rethrow, Throw[result /. seq -> Sequence]];
    		result];
    
+   
+   
+ClearAll[parseInContext];
+SetAttributes[parseInContext, HoldFirst];
+Options[parseInContext] =
+  	{		
+   		"LocalizingContext" -> "MyLocalizingContext`",
+   		"DefaultImportedContexts" :> {},
+   		"ExtraImportedContexts" :> {}
+   	};
+parseInContext[code_, opts : OptionsPattern[]] :=
+  	Module[
+   	{		
+    		result,
+    		context = OptionValue["LocalizingContext"],
+    		defcontexts = OptionValue["DefaultImportedContexts"],
+    		extraContexts = OptionValue["ExtraImportedContexts" ],
+    		allContexts
+    	},		
+   		allContexts = {Sequence @@ defcontexts, 
+     Sequence @@ extraContexts};		
+   		Block[{$ContextPath},			
+    			CleanUp[				
+     				BeginPackage[context]; Needs /@ allContexts; result = code,
+     				EndPackage[]
+     			];
+    			result
+    		]
+   	];   
    
       
 (* TODO: decide whether throwing an exception is indeed appropriate \
@@ -569,10 +599,54 @@ getProjectName[prfile_] :=
   					throwError[getProjectName]);
      
     
+ClearAll[randomContext];
+randomContext[]:=
+	"MyRandomContext" <> ToString[RandomInteger[10^6]] <> "`"    
+    
+    
     
 Clear[singlePackageInProjectQ];
 singlePackageInProjectQ[prdir_] :=
 	Length[FileNames["*.m", {prdir}]] == 1;
+	
+	
+ClearAll[getStringPacletInformation];
+getStringPacletInformation[file_String] :=
+	With[{cont = randomContext[]},
+		Module[{result},
+    		result = 
+    			parseInContext[
+      				getProjectFile[file] //.
+       					Verbatim[Rule][lhs_Symbol, rhs_] :> (ToString[lhs] -> rhs),
+      				"LocalizingContext" -> cont,
+      				"ExtraImportedContexts"  -> {"PacletManager`"}
+      			];
+    		Remove[Evaluate[cont <> "*"]];
+    		result /; Head[result] === PacletManager`Paclet
+    	]
+    ];
+    
+getStringPacletInformation[file_String] :=
+ throwError[getStringPacletInformation, "malformed_pacletinfo_file"]
+	
+getStringPacletInformation[___]:=
+	throwError[getStringPacletInformation];
+	  
+  
+ClearAll[getNameFromPacletInfo];
+getNameFromPacletInfo[file_String?FileExistsQ]:=
+	With[{name = "Name"/.PacletInformation[getStringPacletInformation[file]]},
+		name /; name =!= "Name"	
+	];
+getNameFromPacletInfo[file_String?FileExistsQ]:= $Failed;
+
+getNameFromPacletInfo[file_String]:=
+	throwError[getNameFromPacletInfo,"file_does_not_exist"];
+	
+getNameFromPacletInfo[args___]:=
+	throwError[getNameFromPacletInfo,{args}];	
+	 
+	  
   
   
   
@@ -582,13 +656,16 @@ determineProjectName::nopckg =
   "A package with the same name as the project: `1`, expected in the \
 top level of the porject directory";
 determineProjectName[prdir_String?DirectoryQ] :=
-	Module[{prfile, packages , prname},
+	Module[{prfile, packages , prname, pacletinfo, pacletname},
    		prfile = prdir ~ join ~ "project.m";
-   		packages = FileNames["*.m", {prdir}]; 
+   		packages = FileNames["*.m", {prdir}];
+   		pacletinfo = prdir ~ join ~ "PacletInfo.m"; 
    		prname = 
    			Which[
      			FileExistsQ[prfile],
      				getProjectName[prfile],
+     			FileExistsQ[pacletinfo] && (pacletname = getNameFromPacletInfo[pacletinfo])=!=$Failed, 
+     				pacletname,
      			Length[packages] == 1,
      				FileBaseName[First@packages],
      			Length[packages] == 0,
@@ -749,12 +826,16 @@ ClearAll[makeInitFile];
 *)
 makeInitFile[targetProjectDir_String?DirectoryQ, projectName_String] :=  
 	Module[{kernelDir, newInitFile, initFile},
-		initFile = initFileNameFor[targetProjectDir];
+		(* If init.m already exists in the Kernel subfolder, exit *) 
+		kernelDir = targetProjectDir ~ join ~ "Kernel";
+		newInitFile  = initFileNameFor[kernelDir];
+		If[FileExistsQ[newInitFile],Return[newInitFile]];		
+		(* Top-level init.m file - not in the Kernel subfolder - if it exists *)
+		initFile = initFileNameFor[targetProjectDir];		
    		exitOnFailure[
-    		kernelDir = CreateDirectory[targetProjectDir ~ join ~ "Kernel"],
+    		kernelDir = CreateDirectory[kernelDir],
     		makeInitFile
-    	];
-   		newInitFile  = initFileNameFor[kernelDir];
+    	];   		
    		If[FileExistsQ[initFile],
     		moveFile[initFile, newInitFile],
     		(* else *)
