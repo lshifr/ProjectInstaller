@@ -68,7 +68,7 @@ package (alas, the installer can not install itself, not for the
 first time at least):
 
  - Download the [.zip archive with the project]
- (https://github.com/downloads/lshifr/ProjectInstaller/ProjectInstaller.zip) 
+ (https://github.com/lshifr/ProjectInstaller/blob/master/Release/ProjectInstaller.zip) 
  and extract it to some folder.
  - Copy it into one of the directories where *Mathematica* 
 can find it, for example into a directory returned by evaluating
