@@ -674,12 +674,13 @@ determineProjectName[prdir_String?DirectoryQ] :=
      				throwError[determineProjectName,"no_project_file_and_more_than_one_package"]
      		];
      	(* This check is needed since Needs will be looking for the context with the name of the project *)
+     	(*
    		With[{mainPackage = prdir ~ join ~ (prname <> ".m")},
     		If[! mainPackage ~ in ~ packages,
      			Message[determineProjectName::nopckg, FileNameTake[mainPackage, -1]];
      			throwError[determineProjectName,"no_package_matching_project_name"];
      		]
-     	];
+     	]; *)
    		prname
    ];
    
